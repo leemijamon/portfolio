@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* Common */
+div, p, a, ul, li{font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: #555;}
+a{text-decoration: none;}
+button:focus{outline: none;}
+.contentBox{padding: 130px 0;}
+.contentTitle{font-size: 60px; margin-bottom: 15px;}
+.contentSubTitle{font-size: 18px; margin-bottom: 35px;}
+.underline{background-image: linear-gradient(120deg, #ffc80a 100%, #ffc80a 100%); background-repeat: no-repeat; background-size: 100% 0.2em; background-position: 0 83%;}
+/* Nav */
+.navWrap{width: 100%; height: 79px; position: fixed; top: 0; background-color: #fff; border-bottom: 1px solid #e5e5e5; z-index: 4;}
+.nav{width: 1280px; height: 100%; margin: 0 auto;}
+.nav ul{width: 520px; height: 100%; float: right;}
+.nav ul li{width: 130px; height: 100%; text-align: center; float: left;}
+.nav ul li a{line-height: 80px; font-size: 20px; transition: all 0.2s ease-out; background: transparent;}
+.nav ul li:hover a{background-image: linear-gradient(120deg, #ffc80a 100%, #ffc80a 100%); background-repeat: no-repeat; background-size: 100% 0.2em; background-position: 0 83%;}
+.nav ul li.active a {background-image: linear-gradient(120deg, #ffc80a 100%, #ffc80a 100%); background-repeat: no-repeat; background-size: 100% 0.2em; background-position: 0 83%;}
+/* Home */
+#home{width: 100%; height: 92vh; margin-top: 80px; background: #fff url(../image/main_bg.png) 0 0 no-repeat; background-size: 100% 100%; display: table;}
+.homeWrap{width: 100%; display: table-cell; vertical-align: middle;}
+.homeLeft{width: 49%; float: left; margin-right: 1%;}
+.homeLeft > ul{text-align: right;}
+.homeLeft > ul li:nth-of-type(1){color: #ffc80a; font-size: 40px;}
+.homeLeft > ul li:nth-of-type(2){font-size: 95px;}
+.homeLeft > ul li:nth-of-type(3){font-size: 20px; margin-top: 20px;}
+.homeLeft div{float: right; width: 500px; height: 70px; background-color: #f7f7f7; border-radius: 200px; margin-top: 40px;}
+.homeLeft div ul li{float: left; line-height: 70px; font-size: 18px; text-align: center;}
+.homeLeft div ul li:nth-of-type(1){width: 40%;}
+.homeLeft div ul li:nth-of-type(2){width: 60%;}
+.homeRight{width: 49%; margin-left: 1%; float: right;}
+/* About */
+#about{width: 100%; background-color: #fafafc;}
+.aboutWrap{width: 1280px; margin: 0 auto;}
+.aboutLeft{width: 50%; float: left;}
+.aboutContent{font-size: 14px; line-height: 24px;}
+.aboutRight{width: 50%; float: right; text-align: center;}
+/* Skills */
+.skillsWrap{width: 1280px; margin: 0 auto;}
+.skillsWrap ul{margin-top: 65px;}
+.skillsWrap ul li{width: 20%; float: left; text-align: center;}
+.iconTitle{font-size: 16px; font-weight: bold; margin: 20px 0 15px 0;}
+.iconText{font-size: 14px; line-height: 18px; width: 65%; margin: 0 auto;}
+/* Portfolio */
+#portfolio{width: 100%;}
+.potfolioBG{width: 100%; position: relative; bottom: -2px;}
+.portfolioWrap{width: 100%; padding: 67px 0 130px 0; background-color: #fafafc;}
+.portfolioContent{width: 1280px; margin: 0 auto;}
+.galleryWrap{margin-top: 70px;}
+.galleryWrap a{float: left; width: 28%; max-width: 420px; color: #333; margin-right: 2%;}
+.galleryWrap a:nth-of-type(3n){margin-right: 0; margin-top: 20px;}
+.galleryWrap a:first-of-type{margin-top: 20px;}
+.galleryWrap a:nth-of-type(3n+1){margin-top: 20px;}
+.galleryWrap a:hover figure img{opacity: 1;}
+.galleryWrap a:hover figure button{transition-timing-function: ease-out; transform: translateY(0);}
+.galleryWrap a:hover figcaption p{transform: translateY(0);}
+.galleryWrap a:hover figcaption p:nth-of-type(2){opacity: 0;}
+.galleryWrap figure{position: relative; overflow: hidden; background-color: #333;}
+.galleryWrap figure img{position: relative; display: block; width: 100%; opacity: 0.7; transition: opacity 0.3s;}
+.galleryWrap figure button{position: absolute; padding: 15px; border: none; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; transition: opaciry 0.3s, transform 0.3s;
+    bottom: 0; left: 0; width: 100%; background-color: #ffc80a; color: #fff; transform: translateY(100%);}
+.galleryWrap figcaption{position: absolute; top: 0; z-index: 3; width: 100%; height: 100%; text-align: center;}
+.galleryWrap figcaption p:nth-of-type(1){margin: 10px 0 20px 0; color: #fff; letter-spacing: 1px; font-weight: bold; font-size: 130%; transition: transform 0.3s;}
+.galleryWrap figcaption p:nth-of-type(2){padding: 0 20px; color: #fff; font-weight: 300; transition: opacity 0.3s, transform 0.3s; line-height: 22px;}
+.galleryWrap figcaption p{transform: translateY(50px);}
+.galleryWrap figcaption, .galleryWrap figcaption p, .galleryWrap figcaption button{backface-visibility: hidden;}
+.galleryWrap svg{position: absolute; top: -1px; width: 100%; height: 100%; z-index: 3;}
+.galleryWrap svg path{fill: #ffc80a;}
+
+/* Footer */
+.footer{width: 100%; height: 100px; background-color: #555;}
+.footer ul{width: 1280px; margin: 0 auto;}
+.footer ul li{width: 49%; line-height: 100px; float: left; color: #fff;}
+.footer ul li:nth-of-type(1){margin-right: 2%; text-align: right;}
+.footer ul li:nth-of-type(2){text-align: left;}
+.footer ul li i{margin-right: 3px;}
