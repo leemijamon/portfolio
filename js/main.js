@@ -81,6 +81,10 @@ function hideObjects() {
 		'opacity': 0,
 		'transform': 'translateX(100px)'
 	});
+	$('.fadeInScale_scroll').css({
+		'opacity': 0,
+		'transform': 'scale(0,0)'
+	});
 
 }
 
