@@ -1,52 +1,93 @@
 /**
- * Created by user on 2019-05-29.
+ * Created by user on 2021-02-26.
  */
 
-/* One Page Scroll */
-$(document).ready(function () {
+// Cache selectors
+var lastId,
+ topMenu = $("#mainNav"),
+ topMenuHeight = topMenu.outerHeight()+1,
+ // All list items
+ menuItems = topMenu.find("a"),
+ // Anchors corresponding to menu items
+ scrollItems = menuItems.map(function(){
+   var item = $($(this).attr("href"));
+    if (item.length) { return item; }
+ });
 
-    var navLink = $('.nav ul li a');
-
-    navLink.on('click', function(event) {
-        event.preventDefault();
-        var target = $(this).attr('href');
-        var top = $(target).offset().top;
-        $('html, body').animate({scrollTop: top-80}, 500);
-    });
-
-    // Nav 활성화
-    var Btn = $("ul > li");
-    Btn.find("a").click(function(){
-        Btn.removeClass("active");
-        $(this).parent().addClass("active");
-    })
-
+// Bind click handler to menu items
+// so we can get a fancy scroll animation
+menuItems.click(function(e){
+  var href = $(this).attr("href"),
+      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+  $('html, body').stop().animate({ 
+      scrollTop: offsetTop
+  }, 850);
+  e.preventDefault();
 });
 
-/* Gallery Hover Effect */
-(function() {
+// Bind to scroll
+$(window).scroll(function(){
+   // Get container scroll position
+   var fromTop = $(this).scrollTop()+topMenuHeight;
+   
+   // Get id of current scroll item
+   var cur = scrollItems.map(function(){
+     if ($(this).offset().top < fromTop)
+       return this;
+   });
+   // Get the id of the current element
+   cur = cur[cur.length-1];
+   var id = cur && cur.length ? cur[0].id : "";
+   
+   if (lastId !== id) {
+       lastId = id;
+       // Set/remove active class
+       menuItems
+         .parent().removeClass("active")
+         .end().filter("[href=#"+id+"]").parent().addClass("active");
+   }                   
+});
 
-    function init() {
-        var speed = 330,
-            easing = mina.backout;
+/*############## Scroll Effect ##############*/
+$(document).ready(function() {
+	hideObjects();
+	checkObjectsVisibility();
+});
 
-        [].slice.call ( document.querySelectorAll( '.galleryWrap > a' ) ).forEach( function( el ) {
-            var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
-                pathConfig = {
-                    from : path.attr( 'd' ),
-                    to : el.getAttribute( 'date-path-hover' )
-                };
+$(window).scroll( function() {
+	hideObjects();
+	checkObjectsVisibility();
+});
 
-            el.addEventListener( 'mouseenter', function () {
-                path.animate( { 'path' : pathConfig.to }, speed, easing );
-            } );
+function hideObjects() {
+	$('.fadeInUp_scroll').css({
+		'opacity': 0,
+		'transform': 'translateY(100px)'
+	});
+	$('.fadeInDown_scroll').css({
+		'opacity': 0,
+		'transform': 'translateY(-100px)'
+	});
+	$('.fadeInLeft_scroll').css({
+		'opacity': 0,
+		'transform': 'translateX(-100px)'
+	});
+	$('.fadeInRight_scroll').css({
+		'opacity': 0,
+		'transform': 'translateX(100px)'
+	});
 
-            el.addEventListener( 'mouseleave', function () {
-                path.animate( { 'path' : pathConfig.from }, speed, easing );
-            } );
-        } );
-    }
+}
 
-    init();
+function checkObjectsVisibility() {
+	$('.fadeIn_scroll').each( function(i) {
+		var objectTop = $(this).offset().top;
+		var windowBottom = $(window).scrollTop() + $(window).outerHeight();
 
-})();
+		if( windowBottom > objectTop - 100){
+			$(this).addClass('visible');
+		} else {
+			$(this).removeClass('visible');
+		}
+	});
+}

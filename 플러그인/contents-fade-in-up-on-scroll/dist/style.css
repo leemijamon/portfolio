@@ -1,0 +1,73 @@
+/* Base */
+html, body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-heading.gallery-heading {
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 50px;
+  color: #eaeaea;
+  letter-spacing: -0.05em;
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+@media (min-width: 768px) {
+  .page-heading.gallery-heading {
+    font-size: 108px;
+    line-height: 80px;
+    margin-bottom: 100px;
+  }
+}
+
+.container {
+  max-width: 100%;
+}
+
+/* Grid */
+#custom-grid {
+  position: relative;
+  overflow: hidden;
+}
+#custom-grid .inner-row {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  #custom-grid .inner-row {
+    display: block;
+  }
+}
+#custom-grid .inner-row [class*=col-] {
+  position: relative;
+  display: inline-block;
+}
+@media (max-width: 767px) {
+  #custom-grid .inner-row [class*=col-] {
+    margin-bottom: 30px;
+  }
+}
+#custom-grid .row {
+  margin-bottom: 100px;
+}
+#custom-grid .thumb {
+  text-align: center;
+}
+#custom-grid .thumb img {
+  width: 100%;
+  height: auto;
+}
+
+/* FadeInUp on Scroll transition */
+.fadeInUp-scroll.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 1s;
+}
+
+/* Hacks */
+.no-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
