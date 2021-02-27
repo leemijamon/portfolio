@@ -48,6 +48,11 @@ $(window).scroll(function(){
    }                   
 });
 
+$('.toggle_btn').click(function(){
+	$('.mo_nav_list').slideToggle();
+})
+
+
 /*############## Scroll Effect ##############*/
 $(document).ready(function() {
 	hideObjects();
