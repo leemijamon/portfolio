@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<script type="text/javascript">
+	<!--
+		function fnFamilymall()
+		{
+			var myFrm = document.frm;
+			var winMall = window.open("","popFrm","fullscreen=yes, menubar=no, scrollbars=no, resizable=yes, center:yes");
+			myFrm.action = "http://ezedu.oorionefm.com/gate.asp";
+			myFrm.method = "post";
+			myFrm.target = "popFrm";
+			myFrm.submit();
+			winMall.focus();
+		}
+	//-->
+	</script>
+ </head>
+ <body>
+	<form name="frm">	
+		<input type="hidden" name="orokey" value="1234">
+		<input type="hidden" name="oroid" value="abcd">
+		<a href="#" onclick="fnFamilymall();return false;">복지몰</a>
+	</form>
+ </body>
+</html>

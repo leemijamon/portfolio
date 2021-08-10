@@ -1,0 +1,21 @@
+﻿<%
+   Dim MREQ_EMAIL_YN : MREQ_EMAIL_YN = "1"
+   Dim MREQ_EMAIL : MREQ_EMAIL = "1"
+   Dim MUSE_FIELD1 : MUSE_FIELD1 = "추가1"
+   Dim MUSE_FIELD2 : MUSE_FIELD2 = "추가2"
+   Dim MUSE_FIELD3 : MUSE_FIELD3 = "추가3"
+   Dim MUSE_FIELD4 : MUSE_FIELD4 = "추가4"
+   Dim MC_CONFIRM : MC_CONFIRM = "2"
+   Dim MREQ_ADDR : MREQ_ADDR = "1"
+   Dim MC_GROUP : MC_GROUP = "09"
+   Dim MUSE_ADDR : MUSE_ADDR = "1"
+   Dim MUSE_EMAIL_YN : MUSE_EMAIL_YN = "1"
+   Dim MUSE_EMAIL : MUSE_EMAIL = "1"
+   Dim MC_REJOIN : MC_REJOIN = "0"
+   Dim MUSE_HP : MUSE_HP = "1"
+   Dim MUSE_SMS_YN : MUSE_SMS_YN = "1"
+   Dim MREQ_HP : MREQ_HP = "1"
+   Dim MREQ_SMS_YN : MREQ_SMS_YN = "1"
+   Dim MUSE_TEL : MUSE_TEL = "1"
+
+%>

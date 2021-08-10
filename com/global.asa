@@ -1,0 +1,6 @@
+<!--METADATA TYPE= "typelib"  NAME= "ADODB Type Library" FILE="C:\Program Files\Common Files\SYSTEM\ADO\msado15.dll"  -->
+<script language = 'vbscript' runat='server'>
+Sub Application_OnStart
+   Application("connect") = "Provider=SQLOLEDB;Data Source=172.27.0.74;Initial Catalog=oorione;User ID=oorioneuser;Password=voalffl0494!;"
+End Sub
+</script>

@@ -1,0 +1,250 @@
+﻿{{item.mainbanner}} 
+
+<div class="purchase">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 animated fadeInLeft">
+                    <span>Unify is a clean and fully responsive incredible Template.</span>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos.</p>
+                </div>
+                <div class="col-md-3 btn-buy animated fadeInRight">
+                    <a href="#" class="btn-u btn-u-lg"><i class="fa fa-cloud-download"></i> Download Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<section class="margin-bottom-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="content-box box-default animated fadeInUp animation-delay-10">
+                    <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-html5"></i></span>
+                    <h4 class="content-box-title">Lorem ipsum dolor</h4>
+                    <p>Consectetur adipisicing elit vritatis dolor rem officia molestiae atque eveniet inventore earum quas voluptates cumque</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-box box-default animated fadeInUp animation-delay-14">
+                    <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-css3"></i></span>
+                    <h4 class="content-box-title">Lorem ipsum dolor</h4>
+                    <p>Consectetur adipisicing elit vritatis dolor rem officia molestiae atque eveniet inventore earum quas voluptates cumque</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-box box-default animated fadeInUp animation-delay-16">
+                    <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-desktop"></i></span>
+                    <h4 class="content-box-title">Lorem ipsum dolor</h4>
+                    <p>Consectetur adipisicing elit vritatis dolor rem officia molestiae atque eveniet inventore earum quas voluptates cumque</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-box box-default animated fadeInUp animation-delay-12">
+                    <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-flag"></i></span>
+                    <h4 class="content-box-title">Lorem ipsum dolor</h4>
+                    <p>Consectetur adipisicing elit vritatis dolor rem officia molestiae atque eveniet inventore earum quas voluptates cumque</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="container">
+
+       <!-- Recent Works -->
+        <div class="owl-carousel-v1 owl-work-v1 margin-bottom-40">
+            <div class="headline"><h2 class="pull-left">Recent Works</h2>
+                <div class="owl-navigation">
+                    <div class="customNavigation">
+                        <a class="owl-btn prev-v2"><i class="fa fa-angle-left"></i></a>
+                        <a class="owl-btn next-v2"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div><!--/navigation-->
+            </div>
+
+            <div class="owl-slider-v2">
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/1.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Happy New Year</strong>
+                            <i>Anim pariatur cliche reprehenderit</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/2.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Award Winning Agency</strong>
+                            <i>Responsive Bootstrap Template</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/3.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Wolf Moon Officia</strong>
+                            <i>Pariatur prehe cliche reprehrit</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/4.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Food Truck Quinoa Nesciunt</strong>
+                            <i>Craft labore wes anderson cred</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/5.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Happy New Year</strong>
+                            <i>Anim pariatur cliche reprehenderit</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/1.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Happy New Year</strong>
+                            <i>Anim pariatur cliche reprehenderit</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/2.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Award Winning Agency</strong>
+                            <i>Responsive Bootstrap Template</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/3.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Wolf Moon Officia</strong>
+                            <i>Pariatur prehe cliche reprehrit</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/4.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Food Truck Quinoa Nesciunt</strong>
+                            <i>Craft labore wes anderson cred</i>
+                        </span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img class="img-responsive" src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/5.jpg" alt="">
+                        </em>
+                        <span>
+                            <strong>Happy New Year</strong>
+                            <i>Anim pariatur cliche reprehenderit</i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- End Recent Works -->
+
+      <!-- Info Blokcs -->
+      <div class="row margin-bottom-20">
+          <!-- Welcome Block -->
+        <div class="col-md-8 md-margin-bottom-40">
+          <div class="headline"><h2>Welcome To Unify</h2></div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img class="img-responsive margin-bottom-20" src="http://htmlstream.com/preview/unify-v1.5/assets/img/new/img15.jpg" alt="">
+                    </div>
+                    <div class="col-sm-8">
+                        <p>Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals. It works on all major web browsers, tablets and phone.</p>
+                        <ul class="list-unstyled margin-bottom-20">
+                            <li><i class="fa fa-check color-green"></i> Donec id elit non mi porta gravida</li>
+                            <li><i class="fa fa-check color-green"></i> Corporate and Creative</li>
+                            <li><i class="fa fa-check color-green"></i> Responsive Bootstrap Template</li>
+                            <li><i class="fa fa-check color-green"></i> Corporate and Creative</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <blockquote class="hero-unify">
+                    <p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why. Unify is an incredibly beautiful responsive Bootstrap Template for corporate professionals.</p>
+                    <small>CEO, Jack Bour</small>
+                </blockquote>
+            </div><!--/col-md-8-->
+
+            <!-- Latest Shots -->
+            <div class="col-md-4 md-margin-bottom-20">
+          <div class="headline"><h2>Latest Shots</h2></div>
+          <div id="myCarousel" class="carousel slide carousel-v1">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/5.jpg" alt="">
+                            <div class="carousel-caption">
+                                <p>Facilisis odio, dapibus ac justo acilisis gestinas.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/4.jpg" alt="">
+                            <div class="carousel-caption">
+                                <p>Cras justo odio, dapibus ac facilisis into egestas.</p>
+                            </div>
+                            </div>
+                        <div class="item">
+                            <img src="http://htmlstream.com/preview/unify-v1.5/assets/img/main/3.jpg" alt="">
+                            <div class="carousel-caption">
+                                <p>Justo cras odio apibus ac afilisis lingestas de.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-arrow">
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+          </div>
+            </div><!--/col-md-4-->
+      </div><!--/row-->
+      <!-- End Info Blokcs -->
+
+</div>
+
+
+
