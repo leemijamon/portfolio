@@ -4,76 +4,76 @@
 
 @font-face {
     font-family: 'Noto Sans';
-    src: url('/skin/default/fonts/notosans/notokr-regular.eot');
-    src: url('/skin/default/fonts/notosans/notokr-regular.eot?#iefix') format('embedded-opentype'),
+    src: url('/portfolio/oorione/fonts/notosans/notokr-regular.eot');
+    src: url('/portfolio/oorione/fonts/notosans/notokr-regular.eot?#iefix') format('embedded-opentype'),
          url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype'),
-         url('/skin/default/fonts/notosans/notokr-regular.svg#notokr-regular') format('svg');
+         url('/portfolio/oorione/fonts/notosans/notokr-regular.svg#notokr-regular') format('svg');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: 'Noto Sans';
-    src: url('/skin/default/fonts/notosans/notokr-black.eot');
-    src: url('/skin/default/fonts/notosans/notokr-black.eot?#iefix') format('embedded-opentype'),
+    src: url('/portfolio/oorione/fonts/notosans/notokr-black.eot');
+    src: url('/portfolio/oorione/fonts/notosans/notokr-black.eot?#iefix') format('embedded-opentype'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2) format('woff2'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff) format('woff'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf) format('opentype'),
-         url('/skin/default/fonts/notosans/notokr-black.svg#notokr-black') format('svg');
+         url('/portfolio/oorione/fonts/notosans/notokr-black.svg#notokr-black') format('svg');
     font-weight: 900;
     font-style: normal;
 }
 @font-face {
     font-family: 'Noto Sans';
-    src: url('/skin/default/fonts/notosans/notokr-bold.eot');
-    src: url('/skin/default/fonts/notosans/notokr-bold.eot?#iefix') format('embedded-opentype'),
+    src: url('/portfolio/oorione/fonts/notosans/notokr-bold.eot');
+    src: url('/portfolio/oorione/fonts/notosans/notokr-bold.eot?#iefix') format('embedded-opentype'),
          url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype'),
-         url('/skin/default/fonts/notosans/notokr-bold.svg#notokr-bold') format('svg');
+         url('/portfolio/oorione/fonts/notosans/notokr-bold.svg#notokr-bold') format('svg');
     font-weight: 700;
     font-style: normal;
 }
 @font-face {
     font-family: 'Noto Sans';
-    src: url('/skin/default/fonts/notosans/notokr-medium.eot');
-    src: url('/skin/default/fonts/notosans/notokr-medium.eot?#iefix') format('embedded-opentype'),
+    src: url('/portfolio/oorione/fonts/notosans/notokr-medium.eot');
+    src: url('/portfolio/oorione/fonts/notosans/notokr-medium.eot?#iefix') format('embedded-opentype'),
          url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype'),
-         url('/skin/default/fonts/notosans/notokr-medium.svg#notokr-medium') format('svg');
+         url('/portfolio/oorione/fonts/notosans/notokr-medium.svg#notokr-medium') format('svg');
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
     font-family: 'Noto Sans';
-    src: url('/skin/default/fonts/notosans/notokr-demilight.eot');
-    src: url('/skin/default/fonts/notosans/notokr-demilight.eot?#iefix') format('embedded-opentype'),
-         url('/skin/default/fonts/notosans/notokr-demilight.woff') format('woff'),
-         url('/skin/default/fonts/notosans/notokr-demilight.svg#notokr-demilight') format('svg');
+    src: url('/portfolio/oorione/fonts/notosans/notokr-demilight.eot');
+    src: url('/portfolio/oorione/fonts/notosans/notokr-demilight.eot?#iefix') format('embedded-opentype'),
+         url('/portfolio/oorione/fonts/notosans/notokr-demilight.woff') format('woff'),
+         url('/portfolio/oorione/fonts/notosans/notokr-demilight.svg#notokr-demilight') format('svg');
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
     font-family: 'Noto Sans';
-    src: url('/skin/default/fonts/notosans/notokr-light.eot');
-    src: url('/skin/default/fonts/notosans/notokr-light.eot?#iefix') format('embedded-opentype'),
+    src: url('/portfolio/oorione/fonts/notosans/notokr-light.eot');
+    src: url('/portfolio/oorione/fonts/notosans/notokr-light.eot?#iefix') format('embedded-opentype'),
          url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),
 		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),
 		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype'),
-         url('/skin/default/fonts/notosans/notokr-light.svg#notokr-light') format('svg');
+         url('/portfolio/oorione/fonts/notosans/notokr-light.svg#notokr-light') format('svg');
     font-weight: 200;
     font-style: normal;
 }
 @font-face {
     font-family: 'Noto Sans';
-    src: url('/skin/default/fonts/notosans/notokr-thin.eot');
-    src: url('/skin/default/fonts/notosans/notokr-thin.eot?#iefix') format('embedded-opentype'),
+    src: url('/portfolio/oorione/fonts/notosans/notokr-thin.eot');
+    src: url('/portfolio/oorione/fonts/notosans/notokr-thin.eot?#iefix') format('embedded-opentype'),
          url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),
 		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),
 		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype'),
-         url('/skin/default/fonts/notosans/notokr-thin.svg#notokr-thin') format('svg');
+         url('/portfolio/oorione/fonts/notosans/notokr-thin.svg#notokr-thin') format('svg');
     font-weight: 100;
     font-style: normal;
 }
@@ -82,10 +82,10 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  src: url(/skin/default/fonts/notosans/Poppins-Regular.eot);
+  src: url(/portfolio/oorione/fonts/notosans/Poppins-Regular.eot);
   src: local('Poppins Regular'), local('Poppins-Regular'), 
-  url('/skin/default/fonts/notosans/Poppins-Regular.eot?#iefix') format('embedded-opentype'),
-  url(/skin/default/fonts/notosans/Poppins-Regular.woff) format('woff'),
+  url('/portfolio/oorione/fonts/notosans/Poppins-Regular.eot?#iefix') format('embedded-opentype'),
+  url(/portfolio/oorione/fonts/notosans/Poppins-Regular.woff) format('woff'),
   url(https://fonts.gstatic.com/s/poppins/v5/HLBysyo0MQBO_7E-DWLwzg.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
@@ -93,10 +93,10 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  src: url(/skin/default/fonts/notosans/Poppins-Medium.eot);
+  src: url(/portfolio/oorione/fonts/notosans/Poppins-Medium.eot);
   src: local('Poppins Medium'), local('Poppins-Medium'), 
-  url('/skin/default/fonts/notosans/Poppins-Medium.eot?#iefix') format('embedded-opentype'),
-  url(/skin/default/fonts/notosans/Poppins-Medium.woff) format('woff'),
+  url('/portfolio/oorione/fonts/notosans/Poppins-Medium.eot?#iefix') format('embedded-opentype'),
+  url(/portfolio/oorione/fonts/notosans/Poppins-Medium.woff) format('woff'),
   url(https://fonts.gstatic.com/s/poppins/v5/yQWaOD4iNU5NTY0apN-qj_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
@@ -104,10 +104,10 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
-  src: url(/skin/default/fonts/notosans/Poppins-SemiBold.eot);
+  src: url(/portfolio/oorione/fonts/notosans/Poppins-SemiBold.eot);
   src: local('Poppins SemiBold'), local('Poppins-SemiBold'), 
-  url('/skin/default/fonts/notosans/Poppins-SemiBold.eot?#iefix') format('embedded-opentype'),
-  url(/skin/default/fonts/notosans/Poppins-SemiBold.woff) format('woff'),
+  url('/portfolio/oorione/fonts/notosans/Poppins-SemiBold.eot?#iefix') format('embedded-opentype'),
+  url(/portfolio/oorione/fonts/notosans/Poppins-SemiBold.woff) format('woff'),
   url(https://fonts.gstatic.com/s/poppins/v5/zO07Oxe3SOlw0l2YX2sdIfk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
