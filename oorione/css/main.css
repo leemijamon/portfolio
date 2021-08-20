@@ -18,7 +18,7 @@
 
 .nav.nav-tabs.main-tabs {border-bottom: 1px solid #ccc;}
 .nav.nav-tabs.main-tabs#careersTabs > li {width: 50%;}
-.nav.nav-tabs.main-tabs#contactTabs > li {width: 50%;}
+.nav.nav-tabs.main-tabs#contactTabs > li {width: 100%;}
 .nav.nav-tabs.main-tabs > li > a {margin: 0; text-align: center; display: block; font-size: 16px; line-height: 1.25; font-weight: 400; border: none; border-bottom: 4px solid rgba(255, 255, 255, 0); -webkit-transition: all .4s ease-out; -moz-transition: all .4s ease-out; -ms-transition: all .4s ease-out; -o-transition: all .4s ease-out; transition: all .4s ease-out;}
 .nav.nav-tabs.main-tabs > li.active > a, .nav.nav-tabs.main-tabs > li.active > a:hover, .nav.nav-tabs.main-tabs > li.active > a:focus { background-color: rgba(255, 255, 255, 0); border: none; border-bottom: 4px solid #22b5e6; color: #22b5e6;}
 .nav.nav-tabs.main-tabs > li > a:active, .nav.nav-tabs.main-tabs > li > a:hover, .nav.nav-tabs.main-tabs > li > a:focus {background-color: rgba(255, 255, 255, 0); border: none; border-bottom: 4px solid #22b5e6;}
