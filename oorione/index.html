@@ -294,10 +294,10 @@
 						<div style="width:100%;">
 							<div id="historym1">
 								<div style="float:left;width:50%;text-align:center;font-size:28px;"><span onclick="fnHistory('1');" style="cursor:pointer;color:#22b5e6;font-weight:700;">우리원커머스</span></div>
-								<div style="float:left;width:50%;text-align:center;font-size:28px;"><span onclick="fnHistory('2');" style="cursor:pointer;color:#c0c0c0;font-weight:400;">우리원넷 <span style="font-size:14px;"> click</span></span></div>
+								<div style="float:left;width:50%;text-align:center;font-size:28px;"><span onclick="fnHistory('2');" style="cursor:pointer;color:#c0c0c0;font-weight:400;">우리원넷</span></div>
 							</div>
 							<div id="historym2" style="display:none;">
-								<div style="float:left;width:50%;text-align:center;font-size:28px;"><span onclick="fnHistory('1');" style="cursor:pointer;color:#c0c0c0;font-weight:400;">우리원커머스 <span style="font-size:14px;"> click</span></span></div>
+								<div style="float:left;width:50%;text-align:center;font-size:28px;"><span onclick="fnHistory('1');" style="cursor:pointer;color:#c0c0c0;font-weight:400;">우리원커머스</span></div>
 								<div style="float:left;width:50%;text-align:center;font-size:28px;"><span onclick="fnHistory('2');" style="cursor:pointer;color:#22b5e6;font-weight:700;">우리원넷</span></div>
 							</div>
 						</div>
@@ -1370,6 +1370,57 @@
 			controls:false, 
 		});
 	});
+</script>
+
+<script type="text/javascript">
+	function fnCeo(a){
+		if (a == 1)
+		{
+			document.getElementById('ceo1').style.display = "";
+			document.getElementById('ceom1').style.display = "";
+			document.getElementById('ceo2').style.display = "none";
+			document.getElementById('ceom2').style.display = "none";
+		}
+		if (a == 2)
+		{
+			document.getElementById('ceo1').style.display = "none";
+			document.getElementById('ceom1').style.display = "none";
+			document.getElementById('ceo2').style.display = "";
+			document.getElementById('ceom2').style.display = "";
+		}
+	}
+	function fnHistory(a){
+		if (a == 1)
+		{
+			document.getElementById('history1').style.display = "";
+			document.getElementById('historym1').style.display = "";
+			document.getElementById('history2').style.display = "none";
+			document.getElementById('historym2').style.display = "none";
+		}
+		if (a == 2)
+		{
+			document.getElementById('history1').style.display = "none";
+			document.getElementById('historym1').style.display = "none";
+			document.getElementById('history2').style.display = "";
+			document.getElementById('historym2').style.display = "";
+		}
+	}
+	function fnCi(a){
+		if (a == 1)
+		{
+			document.getElementById('ci1').style.display = "";
+			document.getElementById('cim1').style.display = "";
+			document.getElementById('ci2').style.display = "none";
+			document.getElementById('cim2').style.display = "none";
+		}
+		if (a == 2)
+		{
+			document.getElementById('ci1').style.display = "none";
+			document.getElementById('cim1').style.display = "none";
+			document.getElementById('ci2').style.display = "";
+			document.getElementById('cim2').style.display = "";
+		}
+	}
 </script>
 </body>
 </html>
