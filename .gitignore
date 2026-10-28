@@ -1,0 +1,5 @@
+# SSH keys
+id_rsa
+id_rsa.*
+*.ppk
+*.pem
