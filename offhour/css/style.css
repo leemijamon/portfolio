@@ -232,6 +232,7 @@ button { font: inherit; }
 .sticker b { font-family: var(--f-retro); font-weight: 400; font-size: clamp(30px, 3.3vw, 50px); line-height: 1; }
 .sticker span { font-size: clamp(13px, 1.1vw, 16px); font-weight: 800; }
 .sticker--pink { background: var(--pink); color: var(--cream); }
+.sticker--pink span { font-size: clamp(30px, 3.3vw, 50px); font-weight: 900; line-height: 1.08; letter-spacing: -.05em; word-break: keep-all; }
 .sticker--mustard { background: var(--mustard); }
 .sticker--lime { background: var(--lime); }
 .sticker--coral { background: var(--coral); color: var(--cream); }
