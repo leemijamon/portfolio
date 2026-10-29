@@ -321,10 +321,21 @@ button { font: inherit; }
 .cta__title { font-size: clamp(42px, 6.4vw, 100px); font-weight: 900; line-height: 1.08; letter-spacing: -.06em; text-shadow: 5px 5px 0 var(--ink); }
 .cta__title span { color: var(--mustard); }
 .cta__cans { position: relative; width: min(100%, 760px); height: clamp(320px, 38vw, 520px); margin-top: clamp(16px, 2vw, 28px); }
-.cta__can { position: absolute; bottom: 0; height: 82%; width: auto; filter: drop-shadow(10px 14px 0 rgba(0, 0, 0, .35)) drop-shadow(0 30px 30px rgba(0, 0, 0, .4)); }
-.cta__can--p { left: 0; right: 0; margin-inline: auto; height: 100%; z-index: 2; }
-.cta__can--l { left: 12%; rotate: -14deg; }
-.cta__can--g { right: 12%; rotate: 14deg; }
+/* 캔 슬라이드: 한 개씩 3초마다 자동 전환 (오른쪽에서 들어와 왼쪽으로 나감, 9초 반복) */
+.cta__cans { overflow: hidden; }
+.cta__can {
+  position: absolute; bottom: 0; left: 0; right: 0; margin-inline: auto; height: 100%; width: auto;
+  filter: drop-shadow(10px 14px 0 rgba(0, 0, 0, .35)) drop-shadow(0 30px 30px rgba(0, 0, 0, .4));
+  opacity: 0; animation: ctaSlide 9s cubic-bezier(.65, 0, .25, 1) infinite both;
+}
+.cta__can--2 { animation-delay: 3s; }
+.cta__can--3 { animation-delay: 6s; }
+@keyframes ctaSlide {
+  0%            { opacity: 0; transform: translateX(110%) rotate(14deg); }
+  6%            { opacity: 1; transform: translateX(0) rotate(0deg); }
+  33.3%         { opacity: 1; transform: translateX(0) rotate(0deg); }
+  39.3%, 100%   { opacity: 0; transform: translateX(-110%) rotate(-14deg); }
+}
 .cta__foot { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-top: clamp(28px, 3vw, 44px); padding: clamp(28px, 3vw, 40px) clamp(28px, 4vw, 56px); background: var(--cream); color: var(--ink); border: var(--line); border-radius: var(--radius); box-shadow: 10px 10px 0 var(--ink); }
 .cta__sub { font-size: clamp(17px, 1.5vw, 21px); font-weight: 700; line-height: 1.6; }
 .cta__demo { font-size: 12px; color: var(--ink-soft); }
@@ -372,6 +383,8 @@ button { font: inherit; }
   .js [data-reveal] { opacity: 1; transform: none; }
   .bubbles { display: none; }
   .topbar__track { animation: none; }
+  .cta__can { animation: none !important; opacity: 0; }
+  .cta__can--1 { opacity: 1; transform: none; }
 }
 
 /* 6. Responsive ------------------------------------------------------------ */
@@ -407,7 +420,5 @@ button { font: inherit; }
   .ribbon { font-size: 17px; padding: 8px 14px; }
   .zero__can { height: 76%; }
   .cta__cans { height: 86vw; }
-  .cta__can--l { left: 2%; }
-  .cta__can--g { right: 2%; }
   .btn--big { width: 100%; }
 }
