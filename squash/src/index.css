@@ -1,0 +1,30 @@
+/* 사이트 전체에 적용되는 기본 스타일 */
+
+:root {
+  --color-bg: #f7f7f5;
+  --color-text: #1a1a1a;
+  --color-sub: #666;
+  --color-primary: #e4572e;
+  --color-card: #ffffff;
+  --radius: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Malgun Gothic', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
