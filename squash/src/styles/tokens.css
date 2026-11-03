@@ -1,0 +1,41 @@
+/* 디자인 토큰: 피그마 'Court Blue Tokens' 변수와 이름을 맞췄어요 */
+
+:root {
+  /* 컬러 */
+  --color-court-blue: #2457f5;
+  --color-blue-700: #1a44d1;
+  --color-blue-50: #e8eeff;
+  --color-blue-100: #d3deff;
+  --color-ink: #0b1638;
+  --color-ink-2: #17234d;
+  --color-sub: #5b6b85;
+  --color-muted: #9aa6bf;
+  --color-line: #dfe6f1;
+  --color-bg: #f3f6fb;
+  --color-surface: #ffffff;
+  --color-ball-dot: #d4f53c;
+  --color-lime-50: #f4fcd2;
+  --color-tin-red: #ff4d3d;
+  --color-red-50: #ffe9e6;
+
+  /* 폰트 */
+  --font-kr: 'Noto Sans KR', system-ui, -apple-system, 'Malgun Gothic', sans-serif;
+  --font-display: 'Anton', 'Noto Sans KR', sans-serif;
+
+  /* 모양 */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+  --shadow-card: 0 8px 24px rgba(11, 22, 56, 0.06);
+
+  /* 레이아웃 */
+  --container: 1200px;
+  --header-h: 84px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-h: 64px;
+  }
+}

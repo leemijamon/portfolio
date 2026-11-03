@@ -1,0 +1,21 @@
+/* 아직 만들지 않은 페이지에 임시로 쓰는 안내 상자 */
+.box {
+  padding: 64px 24px;
+  border: 2px dashed var(--color-line);
+  border-radius: var(--radius-md);
+  text-align: center;
+  color: var(--color-sub);
+}
+
+.box strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: var(--color-ink);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}

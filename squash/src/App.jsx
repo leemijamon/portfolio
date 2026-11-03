@@ -1,28 +1,30 @@
-import './App.css'
-import FeatureCard from './components/FeatureCard'
-import features from './data/feature'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import HomePage from './pages/HomePage'
+import RulesPage from './pages/RulesPage'
+import GearPage from './pages/GearPage'
+import GlossaryPage from './pages/GlossaryPage'
+import GlossaryDetailPage from './pages/GlossaryDetailPage'
+import ScorePage from './pages/ScorePage'
+import NotFoundPage from './pages/NotFoundPage'
 
+// 주소와 페이지를 연결하는 '지도' 역할
 function App() {
   return (
-    <main>
-      <h1>Squash 101</h1>
-      <p>벽을 향해 치는, 가장 빠른 라켓 스포츠</p>
-      <button className="start-btn">스쿼시 알아보기</button>
-
-      <section>
-        <h2>스쿼시의 매력</h2>
-        <div className="feature-list">
-          {features.map((feature) => (
-            <FeatureCard
-              key={feature.id}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
-        </div>
-      </section>
-    </main>
+    <Routes>
+      {/* Layout 안에 있는 페이지들은 공통 헤더와 푸터를 함께 써요 */}
+      <Route element={<Layout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/rules" element={<RulesPage />} />
+        <Route path="/gear" element={<GearPage />} />
+        <Route path="/glossary" element={<GlossaryPage />} />
+        {/* :id 자리에 오는 값은 상세 페이지에서 useParams로 꺼내 써요 */}
+        <Route path="/glossary/:id" element={<GlossaryDetailPage />} />
+        <Route path="/score" element={<ScorePage />} />
+        {/* 위에 없는 주소는 모두 여기로 */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   )
 }
 
