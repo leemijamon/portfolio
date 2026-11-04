@@ -1,41 +1,43 @@
-/* 디자인 토큰: 피그마 'Court Blue Tokens' 변수와 이름을 맞췄어요 */
+/* 디자인 토큰: 'FIRST RALLY' 디자인 캔버스의 스타일 가이드 값 */
 
 :root {
   /* 컬러 */
-  --color-court-blue: #2457f5;
-  --color-blue-700: #1a44d1;
-  --color-blue-50: #e8eeff;
-  --color-blue-100: #d3deff;
-  --color-ink: #0b1638;
-  --color-ink-2: #17234d;
-  --color-sub: #5b6b85;
-  --color-muted: #9aa6bf;
-  --color-line: #dfe6f1;
-  --color-bg: #f3f6fb;
+  --color-blue: #1f4bff; /* Court Blue · 메인, 링크, 선수 A */
+  --color-blue-soft: #e8eeff;
+  --color-sky: #0c7ac1; /* 홈 히어로 하늘색 (배경 사진 윗부분 평균색) */
+  --color-ink: #0b1220; /* 본문, 다크 섹션 */
+  --color-ink-2: #151f35;
+  --color-volt: #d7ff3f; /* CTA, 게임 포인트 · 어두운 배경이나 Ink 글자와만 사용 */
+  --color-red: #d42f25; /* Line Red · 섹션 라인, 듀스, 경고 */
+  --color-red-soft: #fbe9e7;
+  --color-red-text: #a3221a;
+  --color-wall: #f5f6f8; /* 연한 섹션 배경 */
+  --color-wall-2: #eef1f6;
+  --color-line: #e3e6ec;
+  --color-line-strong: #cdd3de;
+  --color-sub: #5a6478; /* 보조 텍스트 */
+  --color-sub-2: #33405a;
   --color-surface: #ffffff;
-  --color-ball-dot: #d4f53c;
-  --color-lime-50: #f4fcd2;
-  --color-tin-red: #ff4d3d;
-  --color-red-50: #ffe9e6;
 
   /* 폰트 */
   --font-kr: 'Noto Sans KR', system-ui, -apple-system, 'Malgun Gothic', sans-serif;
   --font-display: 'Anton', 'Noto Sans KR', sans-serif;
 
   /* 모양 */
-  --radius-sm: 12px;
-  --radius-md: 20px;
+  --radius-sm: 14px;
+  --radius-md: 24px;
   --radius-lg: 32px;
   --radius-pill: 999px;
-  --shadow-card: 0 8px 24px rgba(11, 22, 56, 0.06);
 
-  /* 레이아웃 */
-  --container: 1200px;
-  --header-h: 84px;
+  /* 레이아웃: PC 1280 컨테이너 · 여백 40 / 모바일 여백 20 */
+  --container: 1280px;
+  --gutter: 40px;
+  --header-h: 80px;
 }
 
 @media (max-width: 767px) {
   :root {
+    --gutter: 20px;
     --header-h: 64px;
   }
 }

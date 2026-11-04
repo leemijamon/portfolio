@@ -1,8 +1,11 @@
 .card {
-  padding: 36px 32px;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  padding: 32px;
+  border-radius: 28px;
+  background: var(--color-wall);
   transition: transform 0.3s;
 }
 
@@ -10,27 +13,81 @@
   transform: translateY(-4px);
 }
 
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: var(--color-blue-50);
-  font-size: 28px;
+/* 가운데 강조 카드 */
+.highlight {
+  background: var(--color-blue);
+  color: var(--color-surface);
+}
+
+.visual {
+  position: relative;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.pulse {
+  background: var(--color-ink);
+}
+.wall {
+  background: var(--color-surface);
+}
+.angle {
+  background: var(--color-volt);
+}
+
+.visualLabel {
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-surface);
+}
+
+.number {
+  font-size: 40px;
+  color: var(--color-blue);
+}
+
+.highlight .number {
+  color: var(--color-volt);
 }
 
 .title {
-  margin-top: 28px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .description {
-  margin-top: 10px;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--color-sub);
+}
+
+.highlight .description {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 767px) {
+  .card {
+    gap: 14px;
+    padding: 22px;
+    border-radius: 24px;
+  }
+  .visual {
+    height: 140px;
+    border-radius: 16px;
+  }
+  .number {
+    font-size: 30px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .description {
+    font-size: 15px;
+  }
 }

@@ -1,78 +1,346 @@
-.hero {
-  padding-top: 96px;
-}
-
-.eyebrow,
-.label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--color-court-blue);
-}
-
-.title {
-  margin-top: 20px;
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 900;
-  line-height: 1.22;
-  letter-spacing: -0.04em;
-}
-
-.title em {
-  font-style: normal;
-  color: var(--color-court-blue);
-}
-
-.lead {
-  margin-top: 20px;
-  font-size: 18px;
-  color: var(--color-sub);
-}
-
-.buttons {
+/* ===== 섹션 공통 ===== */
+.sectionHead {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 36px;
-}
-
-.section {
-  margin-top: 120px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
 }
 
 .sectionTitle {
-  margin-top: 12px;
-  font-size: clamp(28px, 4vw, 40px);
+  margin-top: 20px;
+  font-size: clamp(28px, 3.3vw, 46px);
   font-weight: 900;
-  line-height: 1.3;
+  line-height: 1.28;
   letter-spacing: -0.03em;
 }
 
-/* 모바일 1열 → 태블릿 2열 → 데스크톱 3열 */
-.featureList {
+.sectionDesc {
+  max-width: 400px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-sub);
+}
+
+.descOnDark {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.eyebrowVolt {
+  color: var(--color-volt);
+}
+
+.eyebrowInk {
+  color: var(--color-ink);
+}
+
+/* 모바일 1열 → 태블릿 2열 → PC 3열 */
+.grid3 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-  margin-top: 40px;
+  gap: 16px;
+  margin-top: 56px;
 }
 
 @media (min-width: 768px) {
-  .featureList {
-    grid-template-columns: repeat(2, 1fr);
+  .grid3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
   }
 }
 
 @media (min-width: 1024px) {
-  .featureList {
-    grid-template-columns: repeat(3, 1fr);
+  .grid3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 767px) {
-  .hero {
-    padding-top: 48px;
+/* ===== 01 왜 스쿼시일까 ===== */
+.why {
+  padding-top: 112px;
+  padding-bottom: 120px;
+}
+
+/* ===== 02 입문 가이드 (다크) ===== */
+.guide {
+  padding: 112px 0 120px;
+  border-radius: 40px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+}
+
+/* ===== 03 점수 계산기 (볼트) ===== */
+.scoreWrap {
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+
+.score {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding: 72px 72px 0;
+  border-radius: 40px;
+  background: var(--color-volt);
+  overflow: hidden;
+}
+
+.scoreText {
+  padding-bottom: 72px;
+}
+
+.scoreDesc {
+  margin: 20px 0 32px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #26304a;
+}
+
+.scorePoints {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.scorePoints li {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(11, 18, 32, 0.06);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.scoreButton {
+  min-height: 60px;
+  padding: 0 32px;
+  font-size: 17px;
+}
+
+/* 휴대폰 목업 */
+.phoneArea {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.phone {
+  width: 310px;
+  height: 560px;
+  padding: 12px 12px 0;
+  border-radius: 44px 44px 0 0;
+  background: var(--color-ink);
+  transform: rotate(-4deg) translateY(20px);
+  box-shadow: 0 40px 80px rgba(11, 18, 32, 0.3);
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 34px 34px 0 0;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.screenTop {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 18px 10px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.playerA,
+.playerB {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px;
+}
+
+.playerA {
+  background: var(--color-blue);
+  color: var(--color-surface);
+}
+
+.serveTag {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-volt);
+  color: var(--color-ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bigScore {
+  font-size: 110px;
+}
+
+.playerName {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pointBar {
+  padding: 10px;
+  background: var(--color-volt);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* ===== 04 체크리스트 ===== */
+.checklist {
+  padding-top: 100px;
+  padding-bottom: 120px;
+}
+
+.checkList {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.checkItem {
+  padding-top: 24px;
+  border-top: 3px solid var(--color-red);
+}
+
+.checkNumber {
+  font-size: 56px;
+  color: var(--color-line);
+}
+
+.checkItem h3 {
+  margin: 14px 0 10px;
+  font-size: 20px;
+}
+
+.checkItem p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-sub);
+}
+
+/* ===== 태블릿 ===== */
+@media (max-width: 1023px) {
+  .sectionHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
-  .section {
-    margin-top: 80px;
+
+  .score {
+    grid-template-columns: 1fr;
+    padding: 56px 48px 0;
+  }
+
+  .scoreText {
+    padding-bottom: 0;
+  }
+
+  .checkList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ===== 모바일 ===== */
+@media (max-width: 767px) {
+  .why {
+    padding-top: 64px;
+    padding-bottom: 72px;
+  }
+
+  .sectionTitle {
+    margin-top: 16px;
+  }
+
+  .sectionDesc {
+    font-size: 15px;
+  }
+
+  .grid3 {
+    margin-top: 28px;
+  }
+
+  .guide {
+    padding: 64px 0 72px;
+    border-radius: 28px;
+  }
+
+  .scoreWrap {
+    padding-top: 56px;
+    padding-bottom: 24px;
+  }
+
+  .score {
+    padding: 32px 22px 0;
+    border-radius: 28px;
+  }
+
+  .scoreDesc {
+    margin: 12px 0 20px;
+    font-size: 15px;
+  }
+
+  .scorePoints {
+    display: none; /* 모바일 시안처럼 요약 문장만 */
+  }
+
+  .scoreButton {
+    width: 100%;
+    min-height: 56px;
+  }
+
+  .phone {
+    width: 230px;
+    height: 300px;
+    padding: 9px 9px 0;
+    border-radius: 34px 34px 0 0;
+    margin-top: 28px;
+    transform: rotate(-4deg) translateY(12px);
+  }
+
+  .screen {
+    border-radius: 26px 26px 0 0;
+  }
+
+  .screenTop {
+    padding: 12px 14px 8px;
+    font-size: 10px;
+  }
+
+  .serveTag {
+    display: none;
+  }
+
+  .bigScore {
+    font-size: 72px;
+  }
+
+  .pointBar {
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  .checklist {
+    padding-top: 56px;
+    padding-bottom: 72px;
+  }
+
+  .checkList {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .checkNumber {
+    font-size: 40px;
   }
 }

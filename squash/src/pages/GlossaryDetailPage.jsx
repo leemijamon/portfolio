@@ -9,7 +9,7 @@ function GlossaryDetailPage() {
 
   return (
     <>
-      <PageHeader label="/ GLOSSARY" title={`용어 상세: ${id}`} />
+      <PageHeader watermark={id.toUpperCase()} title={`용어 상세: ${id}`} />
       <div className="container">
         <div className={styles.box}>
           <strong>5단계에서 만들 페이지예요</strong>

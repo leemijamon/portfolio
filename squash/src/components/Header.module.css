@@ -2,24 +2,26 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(243, 246, 251, 0.9);
-  backdrop-filter: blur(8px);
+  background: var(--color-surface);
   border-bottom: 1px solid var(--color-line);
 }
 
 .inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  max-width: 1440px;
+  gap: 40px;
+  max-width: calc(var(--container) + var(--gutter) * 2);
   height: var(--header-h);
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 var(--gutter);
 }
 
 .logoLink {
   flex: none;
+}
+
+.nav {
+  margin-left: auto;
 }
 
 .menuList {
@@ -28,27 +30,55 @@
 }
 
 .link {
-  position: relative;
+  display: block;
   padding: 8px 0;
+  font-size: 15px;
   font-weight: 500;
-  color: var(--color-sub);
+  color: var(--color-ink);
   transition: color 0.2s;
 }
 
 .link:hover {
-  color: var(--color-ink);
+  color: var(--color-blue);
 }
 
-/* 현재 보고 있는 페이지 */
+/* 현재 보고 있는 페이지: 앞벽 빨간 라인 같은 밑줄 */
 .active {
   font-weight: 700;
-  color: var(--color-court-blue);
+  box-shadow: inset 0 -3px 0 var(--color-red);
+}
+
+.mobileOnly {
+  display: none;
+}
+
+/* ===== 홈: 하늘색 헤더 ===== */
+.onSky {
+  background: var(--color-sky);
+  border-bottom-color: transparent;
+}
+
+.onSky .link,
+.onSky .menuButton {
+  color: var(--color-surface);
+}
+
+.onSky .link {
+  font-weight: 700;
+}
+
+.onSky .link:hover {
+  color: var(--color-volt);
+}
+
+.onSky .active {
+  box-shadow: inset 0 -3px 0 var(--color-volt);
 }
 
 .menuButton {
   display: none;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   align-items: center;
   justify-content: center;
   color: var(--color-ink);
@@ -56,28 +86,31 @@
 
 /* ===== 태블릿 ===== */
 @media (max-width: 1023px) {
-  .inner {
-    padding: 0 24px;
-  }
   .menuList {
     gap: 24px;
-  }
-  .cta {
-    display: none;
   }
 }
 
 /* ===== 모바일 ===== */
 @media (max-width: 767px) {
   .inner {
-    padding: 0 12px 0 20px;
+    padding: 0 8px 0 20px;
+  }
+
+  .cta {
+    display: none;
   }
 
   .menuButton {
     display: flex;
+    margin-left: auto;
   }
 
-  /* 메뉴는 기본으로 숨기고, 열렸을 때만 보여줘요 */
+  /*
+    주의: 부모(.header)에 backdrop-filter, transform, filter가 있으면
+    position: fixed가 화면이 아닌 부모를 기준으로 잡혀요.
+    그래서 헤더에는 이 속성들을 쓰지 않아요.
+  */
   .nav {
     display: none;
     position: fixed;
@@ -85,8 +118,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 16px 20px;
-    background: var(--color-bg);
+    margin: 0;
+    padding: 8px 20px 24px;
+    background: var(--color-surface);
+    overflow-y: auto;
   }
 
   .navOpen {
@@ -98,16 +133,28 @@
     gap: 0;
   }
 
-  .link {
+  .mobileOnly {
     display: block;
+  }
+
+  .link {
     padding: 18px 0;
     border-bottom: 1px solid var(--color-line);
     font-size: 20px;
     font-weight: 700;
-    color: var(--color-ink);
   }
 
   .active {
-    color: var(--color-court-blue);
+    color: var(--color-blue);
+    box-shadow: none;
+  }
+
+  /* 모바일 메뉴 패널은 홈에서도 흰 배경 + 검은 글자 */
+  .onSky .link {
+    color: var(--color-ink);
+  }
+  .onSky .active {
+    color: var(--color-blue);
+    box-shadow: none;
   }
 }

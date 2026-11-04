@@ -1,9 +1,9 @@
-// 메뉴 목록: 헤더와 푸터에서 같이 써요
+// 상단 메뉴 (점수 계산기는 오른쪽 버튼으로 따로 보여줘요)
 const menus = [
-  { to: '/rules', label: '규칙 알아보기' },
-  { to: '/gear', label: '장비 고르기' },
+  { to: '/', label: '홈' },
+  { to: '/rules', label: '규칙 가이드' },
+  { to: '/gear', label: '장비 가이드' },
   { to: '/glossary', label: '샷 용어 사전' },
-  { to: '/score', label: '점수 기록하기' },
 ]
 
 export default menus

@@ -5,9 +5,9 @@ function RulesPage() {
   return (
     <>
       <PageHeader
-        label="/ RULES"
-        title="규칙 알아보기"
-        description="경기 전에 꼭 알아야 할 코트 구조, 서브, 득점 방식을 정리했어요."
+        watermark="RULES"
+        title="규칙 가이드"
+        description="코트 라인 6개, 서브 3단계, 득점 원칙 1가지만 알면 첫 경기를 할 수 있어요."
       />
       <div className="container">
         <div className={styles.box}>

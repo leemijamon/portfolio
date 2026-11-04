@@ -1,7 +1,8 @@
 /* 아직 만들지 않은 페이지에 임시로 쓰는 안내 상자 */
 .box {
+  margin: 56px 0 120px;
   padding: 64px 24px;
-  border: 2px dashed var(--color-line);
+  border: 2px dashed var(--color-line-strong);
   border-radius: var(--radius-md);
   text-align: center;
   color: var(--color-sub);
@@ -18,4 +19,8 @@
   display: flex;
   justify-content: center;
   margin-top: 24px;
+}
+
+.section {
+  padding: 56px var(--gutter) 120px;
 }

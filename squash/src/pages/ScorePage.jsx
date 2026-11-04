@@ -5,8 +5,8 @@ function ScorePage() {
   return (
     <>
       <PageHeader
-        label="/ SCOREBOARD"
-        title="점수 기록하기"
+        watermark="SCORE"
+        title="점수 계산기"
         description="PAR 11점제 규칙으로 경기 점수를 기록해요."
       />
       <div className="container">

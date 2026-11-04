@@ -1,73 +1,94 @@
 .footer {
-  margin-top: 120px;
+  border-radius: 40px 40px 0 0;
   background: var(--color-ink);
   color: var(--color-surface);
   overflow: hidden;
 }
 
 .inner {
-  max-width: calc(var(--container) + 40px);
+  max-width: calc(var(--container) + var(--gutter) * 2);
   margin: 0 auto;
-  padding: 72px 20px 40px;
+  padding: 88px var(--gutter) 0;
 }
 
 .top {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  gap: 48px;
+}
+
+.ctaTitle {
+  margin-bottom: 28px;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
   gap: 24px;
 }
 
-.menuList {
+.group {
   display: flex;
-  gap: 32px;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.groupTitle {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--color-volt);
 }
 
 .link {
-  font-size: 15px;
-  opacity: 0.75;
-  transition: opacity 0.2s;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s;
 }
 
 .link:hover {
-  opacity: 1;
-}
-
-.wordmark {
-  margin-top: 32px;
-  font-family: var(--font-display);
-  font-size: clamp(80px, 17vw, 250px);
-  line-height: 1;
-  letter-spacing: 0.01em;
-  color: var(--color-court-blue);
-  white-space: nowrap;
+  color: var(--color-volt);
 }
 
 .bottom {
   display: flex;
   justify-content: space-between;
-  gap: 8px 24px;
   flex-wrap: wrap;
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 8px 24px;
+  margin-top: 72px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 13px;
-  opacity: 0.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 페이지를 닫는 초대형 워드마크: 아래쪽이 살짝 잘리게 */
+.wordmark {
+  margin-bottom: -0.1em;
+  font-size: clamp(76px, 18.6vw, 268px);
+  line-height: 0.78;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--color-volt);
 }
 
 @media (max-width: 767px) {
   .footer {
-    margin-top: 80px;
+    border-radius: 28px 28px 0 0;
   }
   .inner {
-    padding-top: 48px;
+    padding-top: 56px;
   }
   .top {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 36px;
   }
-  .menuList {
-    flex-wrap: wrap;
-    gap: 12px 20px;
+  .nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .bottom {
+    margin-top: 48px;
   }
 }

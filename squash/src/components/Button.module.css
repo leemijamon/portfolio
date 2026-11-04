@@ -2,17 +2,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  height: 52px;
-  padding: 0 26px;
+  gap: 10px;
   border-radius: var(--radius-pill);
-  border: 1.5px solid transparent;
-  font-size: 16px;
+  border: 0;
   font-weight: 700;
+  line-height: 1;
   white-space: nowrap;
   transition:
     transform 0.2s,
-    background-color 0.2s;
+    filter 0.2s;
 }
 
 .button:hover {
@@ -25,30 +23,48 @@
   transform: none;
 }
 
+/* 크기 */
+.md {
+  min-height: 52px;
+  padding: 0 26px;
+  font-size: 16px;
+}
+.sm {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 15px;
+}
+
+/* 종류 */
 .primary {
-  background: var(--color-court-blue);
+  background: var(--color-blue);
   color: var(--color-surface);
 }
-.primary:hover {
-  background: var(--color-blue-700);
+.dark {
+  background: var(--color-ink);
+  color: var(--color-surface);
 }
-
-.lime {
-  background: var(--color-ball-dot);
+.volt {
+  background: var(--color-volt);
   color: var(--color-ink);
 }
-
 .outline {
-  border-color: var(--color-ink);
+  background: transparent;
   color: var(--color-ink);
+  box-shadow: inset 0 0 0 1.5px var(--color-ink);
 }
-
 .onDark {
-  border-color: var(--color-surface);
+  background: transparent;
+  color: var(--color-surface);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.5);
+}
+.danger {
+  background: var(--color-red);
   color: var(--color-surface);
 }
 
-.danger {
-  background: var(--color-tin-red);
-  color: var(--color-surface);
+.primary:hover,
+.dark:hover,
+.danger:hover {
+  filter: brightness(1.12);
 }

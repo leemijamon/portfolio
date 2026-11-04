@@ -5,7 +5,7 @@ function GlossaryPage() {
   return (
     <>
       <PageHeader
-        label="/ GLOSSARY"
+        watermark="SHOTS"
         title="샷 용어 사전"
         description="드라이브, 보스트, 드롭… 한글과 영문으로 찾아보세요."
       />

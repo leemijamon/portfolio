@@ -10,9 +10,10 @@
 
 body {
   font-family: var(--font-kr);
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-ink);
   line-height: 1.6;
+  letter-spacing: -0.01em;
   word-break: keep-all; /* 한글 단어가 중간에 끊기지 않게 */
   -webkit-font-smoothing: antialiased;
 }
@@ -47,16 +48,42 @@ button {
 
 /* 키보드로 이동할 때만 보이는 포커스 테두리 */
 :focus-visible {
-  outline: 3px solid var(--color-court-blue);
+  outline: 3px solid var(--color-blue);
   outline-offset: 3px;
 }
 
 /* 가운데 정렬된 콘텐츠 폭 */
 .container {
   width: 100%;
-  max-width: calc(var(--container) + 40px);
+  max-width: calc(var(--container) + var(--gutter) * 2);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--gutter);
+}
+
+/* 섹션 라벨: 앞벽의 빨간 라인을 모티프로 한 인덱스 (예: ― 01 코트 구조) */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  color: var(--color-red);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 3px;
+  background: currentColor;
+}
+
+/* 영문 디스플레이 숫자·제목 (Anton) */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.9;
 }
 
 /* 화면에는 안 보이고 화면 낭독기만 읽는 텍스트 */

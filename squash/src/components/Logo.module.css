@@ -9,8 +9,8 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: var(--color-ink);
 }
@@ -19,25 +19,43 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-ball-dot);
+  background: var(--color-volt);
 }
 
 .wordmark {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 26px;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
+/* 하늘색 배경용: 공은 그대로, 글자만 흰색 */
+.onSky .wordmark {
+  color: var(--color-surface);
+}
+
+/* 어두운 배경용: 볼트 공 + 검은 점 */
 .dark .ball {
-  background: var(--color-court-blue);
+  background: var(--color-volt);
+}
+.dark .ball i {
+  background: var(--color-ink);
 }
 .dark .wordmark {
   color: var(--color-surface);
 }
 
 @media (max-width: 767px) {
+  .ball {
+    width: 24px;
+    height: 24px;
+    gap: 3px;
+  }
+  .ball i {
+    width: 5px;
+    height: 5px;
+  }
   .wordmark {
-    font-size: 20px;
+    font-size: 22px;
   }
 }

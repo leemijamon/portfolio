@@ -5,8 +5,8 @@ function GearPage() {
   return (
     <>
       <PageHeader
-        label="/ GEAR"
-        title="장비 고르기"
+        watermark="GEAR"
+        title="장비 가이드"
         description="처음엔 라켓, 공, 실내화, 고글만 있으면 충분해요."
       />
       <div className="container">

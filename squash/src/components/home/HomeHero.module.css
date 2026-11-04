@@ -1,0 +1,421 @@
+/*
+  히어로 구조
+  - .stage: 하늘 + SQUASH 글자 + 선수 사진이 겹쳐 있는 무대 (사진 비율 1672:941 유지)
+  - .copy: 제목과 버튼 (PC에서는 무대 위에 겹치고, 모바일에서는 무대 아래로)
+  - cqw: '무대 너비의 1%' 단위. 화면 크기와 상관없이 글자·공 크기가 무대에 비례해요
+*/
+
+.hero {
+  position: relative;
+  background: var(--color-surface);
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 1672 / 941;
+  overflow: hidden;
+  container-type: inline-size;
+  background: var(--color-sky);
+}
+
+/*
+  하늘 배경 사진 + 처음에 살짝 줌 아웃
+  - CSS 안의 url()도 Vite가 경로를 찾아서 빌드해 줘요 (이 파일 기준 상대 경로)
+  - 사진이 늦게 뜨는 동안에도 어색하지 않게 비슷한 하늘색(--color-sky)을 먼저 깔아요
+  - cover: 영역을 꽉 채우도록 확대 / center bottom: 구름이 있는 아래쪽을 기준으로 맞춤
+*/
+.sky {
+  position: absolute;
+  inset: 0;
+  background: var(--color-sky) url('../../assets/main-bg.webp') center bottom / cover no-repeat;
+  animation: skyIn 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes skyIn {
+  from {
+    transform: scale(1.15);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* SQUASH 대형 글자: 한 글자씩 아래에서 올라옴 */
+.word {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6.5%;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 31.5cqw;
+  line-height: 0.82;
+  color: var(--color-surface);
+}
+
+.letter {
+  display: inline-block;
+  animation: rise 1s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+  animation-delay: calc(0.25s + var(--i) * 70ms);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(45%);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* 바닥(흰 띠)과 그림자 */
+.floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 7.5%;
+  background: var(--color-surface);
+}
+
+.floorShadow {
+  position: absolute;
+  left: 50%;
+  bottom: 2.2%;
+  width: 45%;
+  height: 3.2%;
+  border-radius: 50%;
+  background: rgba(10, 20, 60, 0.28);
+  filter: blur(10px);
+}
+
+/* 선수 사진: 오른쪽에서 런지하며 들어옴 */
+.athlete {
+  position: absolute;
+  left: 27%;
+  top: 22.4%;
+  width: 70%;
+  height: auto;
+  filter: drop-shadow(-26px 34px 26px rgba(4, 22, 92, 0.38));
+  transform-origin: 60% 100%;
+  animation: lunge 1.15s cubic-bezier(0.16, 0.9, 0.24, 1) 0.55s both;
+}
+
+@keyframes lunge {
+  from {
+    transform: translate(14%, 4%) scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* 속도선 */
+.streaks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.streak {
+  position: absolute;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  opacity: 0;
+  animation: streak 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.streakVolt {
+  height: 3px;
+  background: linear-gradient(90deg, rgba(215, 255, 63, 0), var(--color-volt), rgba(215, 255, 63, 0));
+}
+
+@keyframes streak {
+  0% {
+    transform: translateX(420%);
+    opacity: 0;
+  }
+  15%,
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+}
+
+/* 라켓에서 튀어나가는 공 + 꼬리 + 충격 링 */
+.ball,
+.trail,
+.ring {
+  position: absolute;
+  left: 17%;
+  top: 54%;
+  opacity: 0;
+}
+
+.ball {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5cqw;
+  width: 3.2cqw;
+  height: 3.2cqw;
+  margin: -1.6cqw 0 0 -1.6cqw;
+  border-radius: 50%;
+  background: var(--color-ink);
+  box-shadow: 0 10px 20px rgba(4, 22, 92, 0.35);
+  animation: shot 3.2s cubic-bezier(0.2, 0.7, 0.3, 1) 1.6s infinite;
+}
+
+.ball i {
+  width: 0.6cqw;
+  height: 0.6cqw;
+  border-radius: 50%;
+  background: var(--color-volt);
+}
+
+@keyframes shot {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.8);
+  }
+  38% {
+    opacity: 1;
+    transform: translate(-15cqw, -15cqw) scale(1.4);
+  }
+  45% {
+    opacity: 0;
+    transform: translate(-18cqw, -18cqw) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.trail {
+  width: 20cqw;
+  height: 3px;
+  transform-origin: 0 50%;
+  rotate: -135deg;
+  background: linear-gradient(90deg, var(--color-volt), rgba(215, 255, 63, 0));
+  animation: trail 3.2s ease-out 1.6s infinite;
+}
+
+@keyframes trail {
+  0% {
+    opacity: 0;
+    scale: 0 1;
+  }
+  10% {
+    opacity: 1;
+    scale: 1 1;
+  }
+  40% {
+    opacity: 0;
+    scale: 1.2 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.ring {
+  width: 7cqw;
+  height: 7cqw;
+  margin: -3.5cqw 0 0 -3.5cqw;
+  border: 3px solid var(--color-volt);
+  border-radius: 50%;
+  animation: ring 3.2s ease-out 1.6s infinite;
+}
+
+@keyframes ring {
+  0% {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+  35% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 오른쪽 세로 글씨 */
+.vertical {
+  position: absolute;
+  right: 28px;
+  top: 22%;
+  writing-mode: vertical-rl;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--color-surface);
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.2, 1) 1.9s both;
+}
+
+/* ===== 제목과 버튼 ===== */
+.copy {
+  position: absolute;
+  left: 48px;
+  top: 68%;
+  max-width: 560px;
+  color: var(--color-surface);
+}
+
+.title {
+  font-size: clamp(32px, 3.1vw, 44px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  text-shadow: 0 2px 24px rgba(4, 30, 100, 0.55);
+}
+
+/* 한 줄씩 아래에서 밀려 올라오는 효과: 바깥은 잘라내고 안쪽만 움직여요 */
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 4px;
+}
+
+.line > span {
+  display: block;
+  animation: lineUp 0.9s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+@keyframes lineUp {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.2, 1) 1.7s both;
+}
+
+/* 하늘 위의 흰 버튼 */
+.startButton {
+  background: var(--color-surface);
+  box-shadow: 0 12px 30px rgba(4, 22, 92, 0.3);
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ===== 모바일: 무대는 고정 높이, 제목은 무대 아래 ===== */
+@media (max-width: 767px) {
+  .stage {
+    aspect-ratio: auto;
+    height: 400px;
+  }
+
+  /* 모바일은 화면이 좁아서 구름이 많은 오른쪽을 더 보여줘요 */
+  .sky {
+    background-position: 70% bottom;
+  }
+
+  .word {
+    top: 30px;
+    font-size: 124px;
+    line-height: 0.86;
+  }
+
+  .floor {
+    height: 34px;
+  }
+
+  .floorShadow {
+    left: 46%;
+    bottom: 20px;
+    width: 50%;
+    height: 16px;
+    filter: blur(8px);
+  }
+
+  .athlete {
+    left: -1%;
+    top: 104px;
+    width: 108%;
+    filter: drop-shadow(-14px 20px 16px rgba(4, 22, 92, 0.35));
+  }
+
+  /* 모바일에서는 공 애니메이션 위치가 사진과 맞지 않아 숨겨요 */
+  .ball,
+  .trail,
+  .ring {
+    display: none;
+  }
+
+  .vertical {
+    right: 12px;
+    top: 24px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  .copy {
+    position: static;
+    max-width: none;
+    padding: 8px 20px 8px;
+    color: var(--color-ink);
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 1.25;
+    text-shadow: none;
+  }
+
+  .buttons {
+    flex-direction: column;
+    margin-top: 22px;
+  }
+
+  .buttons > * {
+    width: 100%;
+    min-height: 56px;
+  }
+
+  /* 흰 배경 위로 내려왔으니 '시작하기'는 블루 버튼으로 */
+  .startButton {
+    background: var(--color-blue);
+    color: var(--color-surface);
+    box-shadow: none;
+  }
+}
+
+/* 움직임 줄이기: 반복되는 장식 효과는 아예 숨김 */
+@media (prefers-reduced-motion: reduce) {
+  .ball,
+  .trail,
+  .ring,
+  .streaks {
+    display: none;
+  }
+}

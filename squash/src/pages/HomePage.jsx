@@ -1,41 +1,138 @@
-import Button from '../components/Button'
+import HomeHero from '../components/home/HomeHero'
 import FeatureCard from '../components/FeatureCard'
-import features from '../data/feature'
+import GuideCard from '../components/GuideCard'
+import Button from '../components/Button'
+import Reveal from '../components/Reveal'
+import { features, guides, scorePoints, checklist } from '../data/home'
 import styles from './HomePage.module.css'
 
-// 홈 (2단계에서 피그마 시안대로 히어로·가이드·점수 계산기 소개를 완성해요)
 function HomePage() {
   return (
     <>
-      <section className={`container ${styles.hero}`}>
-        <p className={styles.eyebrow}>SQUASH GUIDE FOR BEGINNERS</p>
-        <h1 className={styles.title}>
-          벽을 향해 치는,
-          <br />
-          <em>가장 빠른</em> 라켓 스포츠
-        </h1>
-        <p className={styles.lead}>처음 라켓을 잡는 사람을 위한 스쿼시 입문 가이드</p>
-        <div className={styles.buttons}>
-          <Button to="/rules">규칙부터 알아보기</Button>
-          <Button to="/score" variant="outline">
-            점수 기록하기
-          </Button>
+      <HomeHero />
+
+      {/* 01 왜 스쿼시일까 */}
+      <section className={`container ${styles.why}`}>
+        <div className={styles.sectionHead}>
+          <div>
+            <p className="eyebrow">01 왜 스쿼시일까</p>
+            <h2 className={styles.sectionTitle}>
+              처음이라도 금방 빠져드는
+              <br />
+              스쿼시의 매력 3가지
+            </h2>
+          </div>
+          <p className={styles.sectionDesc}>
+            공이 벽에 맞고 돌아오니 상대가 없어도 혼자 연습할 수 있고, 랠리가 끊기지 않아 첫날부터 땀이 납니다.
+          </p>
+        </div>
+        <div className={styles.grid3}>
+          {features.map((feature, index) => (
+            // delay로 카드가 순서대로 하나씩 나타나요
+            <Reveal key={feature.id} delay={index * 120}>
+              <FeatureCard
+                number={feature.number}
+                art={feature.art}
+                title={feature.title}
+                description={feature.description}
+                highlight={feature.highlight}
+              />
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      <section className={`container ${styles.section}`}>
-        <p className={styles.label}>/ WHY SQUASH</p>
-        <h2 className={styles.sectionTitle}>스쿼시가 매력적인 3가지 이유</h2>
-        <div className={styles.featureList}>
-          {features.map((feature) => (
-            <FeatureCard
-              key={feature.id}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
+      {/* 02 입문 가이드 */}
+      <section className={styles.guide}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <div>
+              <p className={`eyebrow ${styles.eyebrowVolt}`}>02 입문 가이드</p>
+              <h2 className={styles.sectionTitle}>
+                무엇부터 알면 될까요?
+                <br />세 가지 가이드로 시작하세요
+              </h2>
+            </div>
+            <p className={`${styles.sectionDesc} ${styles.descOnDark}`}>
+              긴 글 대신 그림과 카드로 정리했어요. 순서대로 읽어도, 필요한 것만 골라 봐도 좋아요.
+            </p>
+          </div>
+          <div className={styles.grid3}>
+            {guides.map((guide, index) => (
+              <Reveal key={guide.id} delay={index * 120}>
+                {/* {...guide}: guide 객체의 값을 props로 한 번에 넘기기 */}
+                <GuideCard {...guide} />
+              </Reveal>
+            ))}
+          </div>
         </div>
+      </section>
+
+      {/* 03 점수 계산기 소개 */}
+      <section className={`container ${styles.scoreWrap}`}>
+        <div className={styles.score}>
+          <div className={styles.scoreText}>
+            <p className={`eyebrow ${styles.eyebrowInk}`}>03 점수 계산기</p>
+            <h2 className={styles.sectionTitle}>
+              경기 중에도 한 손으로,
+              <br />
+              점수는 스코어보드에
+            </h2>
+            <p className={styles.scoreDesc}>
+              “지금 몇 대 몇이었지?” “누가 서브였더라?” 처음 경기할 때 가장 헷갈리는 순간을 대신 기억해 드려요.
+            </p>
+            <ul className={styles.scorePoints}>
+              {scorePoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+            <Button to="/score" variant="dark" className={styles.scoreButton}>
+              점수 계산기 시작하기
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Button>
+          </div>
+
+          {/* 휴대폰 화면 미리보기 (장식) */}
+          <div className={styles.phoneArea} aria-hidden="true">
+            <div className={styles.phone}>
+              <div className={styles.screen}>
+                <div className={styles.screenTop}>
+                  <span>GAME 2</span>
+                  <span>김도윤 1 : 0 이서연</span>
+                </div>
+                <div className={styles.playerA}>
+                  <span className={styles.serveTag}>● 서브 · R</span>
+                  <span className={`display ${styles.bigScore}`}>10</span>
+                  <span className={styles.playerName}>김도윤</span>
+                </div>
+                <div className={styles.pointBar}>게임 포인트 · 김도윤</div>
+                <div className={styles.playerB}>
+                  <span className={`display ${styles.bigScore}`}>7</span>
+                  <span className={styles.playerName}>이서연</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 04 첫 코트 체크리스트 (푸터의 '첫 코트 체크리스트' 링크가 여기로 와요) */}
+      <section id="checklist" className={`container ${styles.checklist}`}>
+        <p className="eyebrow">04 첫 코트 체크리스트</p>
+        <h2 className={styles.sectionTitle}>처음 코트에 가기 전, 이것만 챙기세요</h2>
+        <ol className={styles.checkList}>
+          {checklist.map((item, index) => (
+            <li key={item.title} className={styles.checkItem}>
+              <span className={`display ${styles.checkNumber}`} aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </li>
+          ))}
+        </ol>
       </section>
     </>
   )

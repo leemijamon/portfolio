@@ -5,13 +5,21 @@ import Footer from './Footer'
 
 // 모든 페이지에 공통으로 들어가는 틀
 function Layout() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
-  // 페이지를 옮기면 스크롤을 맨 위로 올려요
-  // (React Router는 화면만 바꾸기 때문에, 이걸 안 하면 이전 스크롤 위치가 그대로 남아요)
+  // 페이지를 옮기면 스크롤 위치를 정리해요
+  // - 주소에 #이 있으면(예: /#checklist) 그 요소로 이동
+  // - 없으면 맨 위로 (React Router는 화면만 바꾸기 때문에 직접 올려 줘야 해요)
   useEffect(() => {
+    if (hash) {
+      const target = document.getElementById(hash.slice(1))
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+    }
     window.scrollTo(0, 0)
-  }, [pathname])
+  }, [pathname, hash])
 
   return (
     <>
