@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Button from './Button'
-import styles from './Footer.module.css'
+import styles from './Footer.module.scss'
 
 // 푸터 메뉴를 묶음(그룹)별 데이터로
 const footerGroups = [

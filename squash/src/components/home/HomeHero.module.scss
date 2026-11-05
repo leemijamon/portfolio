@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as m;
+
 /*
   히어로 구조
   - .stage: 하늘 + SQUASH 글자 + 선수 사진이 겹쳐 있는 무대 (사진 비율 1672:941 유지)
@@ -44,7 +46,7 @@
   - 제목은 hero 아래에서 15% 지점에 닿아 있으므로, 전체 높이의 85%가 위 내용을 담아야 해요
   - 글자 크기 계산은 .word 와 같은 식 (--cw = 그림 영역 너비)
 */
-@media (min-width: 768px) {
+@include m.tablet-up {
   .canvas {
     --word-fs: calc(min(var(--container), var(--cw) - var(--gutter) * 2) / 4.887);
     --word-bottom: calc(var(--cw) * 0.02 + var(--word-fs) * 0.82);
@@ -312,7 +314,7 @@
   ===== 태블릿: 가로가 좁아 카피가 선수·글자와 부딪히므로 그림 영역을 더 세로로 =====
   이 구간은 한 화면에 다 넣는 것보다 겹치지 않는 게 우선이라 높이 제한을 풀어요
 */
-@media (min-width: 768px) and (max-width: 1023px) {
+@include m.tablet-only {
   .canvas {
     aspect-ratio: 1671 / 1100;
     --cw: 100vw;
@@ -321,7 +323,7 @@
 }
 
 /* ===== 모바일: 무대는 고정 높이, 제목은 무대 아래 ===== */
-@media (max-width: 767px) {
+@include m.mobile {
   /* 모바일은 발이 튀어나오는 효과 없이, 바닥 띠 위에 선수가 서 있어요 */
   .stage {
     overflow: hidden;
@@ -416,7 +418,7 @@
 }
 
 /* 움직임 줄이기: 반복되는 장식 효과는 아예 숨김 */
-@media (prefers-reduced-motion: reduce) {
+@include m.reduced-motion {
   .streaks {
     display: none;
   }

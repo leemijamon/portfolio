@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import Button from '../components/Button'
-import styles from './Placeholder.module.css'
+import styles from './Placeholder.module.scss'
 
 function GlossaryDetailPage() {
   // 주소 /glossary/boast 에서 :id 자리의 'boast'를 꺼내요

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import styles from './Reveal.module.css'
+import styles from './Reveal.module.scss'
 
 // 화면에 들어오면 아래에서 살짝 떠오르며 나타나는 상자
 // - useRef: 실제 DOM 요소를 가리키는 '손잡이'

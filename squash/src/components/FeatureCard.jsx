@@ -1,4 +1,4 @@
-import styles from './FeatureCard.module.css'
+import styles from './FeatureCard.module.scss'
 
 // 홈의 '스쿼시의 매력' 카드
 // - image / imageAlt: 상단 사진과 대체 텍스트

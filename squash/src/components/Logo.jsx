@@ -1,4 +1,4 @@
-import styles from './Logo.module.css'
+import styles from './Logo.module.scss'
 
 // 가장 느린 공인 '더블 옐로' 볼을 옮긴 로고
 // theme: 'light'(기본) | 'dark'(푸터) | 'onSky'(홈 하늘색 헤더)

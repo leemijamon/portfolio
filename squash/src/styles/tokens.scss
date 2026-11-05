@@ -1,4 +1,6 @@
 /* 디자인 토큰: 'FIRST RALLY' 디자인 캔버스의 스타일 가이드 값 */
+@use './mixins' as m;
+
 
 :root {
   /* 컬러 */
@@ -35,7 +37,7 @@
   --header-h: 80px;
 }
 
-@media (max-width: 767px) {
+@include m.mobile {
   :root {
     --gutter: 20px;
     --header-h: 64px;

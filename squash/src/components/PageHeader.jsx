@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styles from './PageHeader.module.css'
+import styles from './PageHeader.module.scss'
 
 // 각 페이지 맨 위의 블루 배너
 // - watermark: 배경에 크게 깔리는 영문 단어 (예: RULES)

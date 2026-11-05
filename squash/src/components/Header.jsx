@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import Logo from './Logo'
 import Button from './Button'
 import menus from '../data/menus'
-import styles from './Header.module.css'
+import styles from './Header.module.scss'
 
 function Header() {
   // state: 모바일 메뉴가 열려 있는지 (true / false)

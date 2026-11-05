@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styles from './Button.module.css'
+import styles from './Button.module.scss'
 
 // 모든 버튼의 모양을 한 곳에서 관리하는 컴포넌트
 // - variant: 'primary'(블루) | 'dark'(잉크) | 'volt'(볼트) | 'outline' | 'onDark' | 'danger'

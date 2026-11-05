@@ -1,3 +1,5 @@
+@use '../styles/mixins' as m;
+
 .logo {
   display: inline-flex;
   align-items: center;
@@ -13,13 +15,24 @@
   height: 28px;
   border-radius: 50%;
   background: var(--color-ink);
-}
 
-.ball i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-volt);
+  i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-volt);
+  }
+
+  @include m.mobile {
+    width: 24px;
+    height: 24px;
+    gap: 3px;
+
+    i {
+      width: 5px;
+      height: 5px;
+    }
+  }
 }
 
 .wordmark {
@@ -27,6 +40,10 @@
   font-size: 26px;
   line-height: 1;
   letter-spacing: 0.01em;
+
+  @include m.mobile {
+    font-size: 22px;
+  }
 }
 
 /* 하늘색 배경용: 공은 그대로, 글자만 흰색 */
@@ -35,27 +52,16 @@
 }
 
 /* 어두운 배경용: 볼트 공 + 검은 점 */
-.dark .ball {
-  background: var(--color-volt);
-}
-.dark .ball i {
-  background: var(--color-ink);
-}
-.dark .wordmark {
-  color: var(--color-surface);
-}
-
-@media (max-width: 767px) {
+.dark {
   .ball {
-    width: 24px;
-    height: 24px;
-    gap: 3px;
+    background: var(--color-volt);
+
+    i {
+      background: var(--color-ink);
+    }
   }
-  .ball i {
-    width: 5px;
-    height: 5px;
-  }
+
   .wordmark {
-    font-size: 22px;
+    color: var(--color-surface);
   }
 }

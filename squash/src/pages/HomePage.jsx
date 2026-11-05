@@ -4,7 +4,7 @@ import GuideCard from '../components/GuideCard'
 import Button from '../components/Button'
 import Reveal from '../components/Reveal'
 import { features, guides, scorePoints, checklist } from '../data/home'
-import styles from './HomePage.module.css'
+import styles from './HomePage.module.scss'
 
 function HomePage() {
   return (

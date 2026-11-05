@@ -1,3 +1,5 @@
+@use '../styles/mixins' as m;
+
 .card {
   display: flex;
   flex-direction: column;
@@ -160,7 +162,7 @@
   transition: transform 0.3s;
 }
 
-@media (max-width: 767px) {
+@include m.mobile {
   .card {
     border-radius: 24px;
   }

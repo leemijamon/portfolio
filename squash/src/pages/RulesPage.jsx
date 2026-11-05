@@ -1,5 +1,5 @@
 import PageHeader from '../components/PageHeader'
-import styles from './Placeholder.module.css'
+import styles from './Placeholder.module.scss'
 
 function RulesPage() {
   return (

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styles from './GuideCard.module.css'
+import styles from './GuideCard.module.scss'
 
 // 카드 위쪽 그림 영역 (장식)
 function GuideVisual({ type }) {

@@ -1,4 +1,6 @@
 /* 사이트 전체에 적용되는 기본 스타일 */
+@use './styles/mixins' as m;
+
 
 *,
 *::before,
@@ -97,7 +99,7 @@ button {
 }
 
 /* 움직임 줄이기 설정을 켠 사용자에게는 애니메이션을 끔 */
-@media (prefers-reduced-motion: reduce) {
+@include m.reduced-motion {
   *,
   *::before,
   *::after {

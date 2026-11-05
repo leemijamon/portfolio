@@ -1,3 +1,5 @@
+@use '../styles/mixins' as m;
+
 .header {
   position: sticky;
   top: 0;
@@ -95,14 +97,14 @@
 }
 
 /* ===== 태블릿 ===== */
-@media (max-width: 1023px) {
+@include m.until-desktop {
   .menuList {
     gap: 24px;
   }
 }
 
 /* ===== 모바일 ===== */
-@media (max-width: 767px) {
+@include m.mobile {
   .inner {
     padding: 0 8px 0 20px;
   }

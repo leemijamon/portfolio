@@ -1,3 +1,5 @@
+@use '../styles/mixins' as m;
+
 .banner {
   position: relative;
   overflow: hidden;
@@ -14,21 +16,31 @@
   line-height: 1;
   color: rgba(255, 255, 255, 0.08);
   pointer-events: none;
+
+  @include m.mobile {
+    font-size: 120px;
+    bottom: -14px;
+  }
 }
 
 .inner {
   position: relative;
   padding-top: 56px;
   padding-bottom: 56px;
+
+  @include m.mobile {
+    padding-top: 32px;
+    padding-bottom: 28px;
+  }
 }
 
 .breadcrumb {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
-}
 
-.breadcrumb b {
-  color: var(--color-surface);
+  b {
+    color: var(--color-surface);
+  }
 }
 
 .title {
@@ -44,18 +56,8 @@
   font-size: 17px;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.88);
-}
 
-@media (max-width: 767px) {
-  .watermark {
-    font-size: 120px;
-    bottom: -14px;
-  }
-  .inner {
-    padding-top: 32px;
-    padding-bottom: 28px;
-  }
-  .description {
+  @include m.mobile {
     font-size: 15px;
   }
 }

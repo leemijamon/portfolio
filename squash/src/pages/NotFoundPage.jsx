@@ -1,6 +1,6 @@
 import PageHeader from '../components/PageHeader'
 import Button from '../components/Button'
-import styles from './Placeholder.module.css'
+import styles from './Placeholder.module.scss'
 
 function NotFoundPage() {
   return (

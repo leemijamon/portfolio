@@ -1,4 +1,6 @@
 /* ===== 섹션 공통 ===== */
+@use '../styles/mixins' as m;
+
 .sectionHead {
   display: flex;
   align-items: flex-end;
@@ -41,14 +43,14 @@
   margin-top: 56px;
 }
 
-@media (min-width: 768px) {
+@include m.tablet-up {
   .grid3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
   }
 }
 
-@media (min-width: 1024px) {
+@include m.desktop {
   .grid3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -229,7 +231,7 @@
 }
 
 /* ===== 태블릿 ===== */
-@media (max-width: 1023px) {
+@include m.until-desktop {
   .sectionHead {
     flex-direction: column;
     align-items: flex-start;
@@ -251,7 +253,7 @@
 }
 
 /* ===== 모바일 ===== */
-@media (max-width: 767px) {
+@include m.mobile {
   .why {
     padding-top: 64px;
     padding-bottom: 72px;

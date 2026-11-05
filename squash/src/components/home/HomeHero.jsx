@@ -1,6 +1,6 @@
 import Button from '../Button'
 import athlete from '../../assets/images/home/squash-human.webp'
-import styles from './HomeHero.module.css'
+import styles from './HomeHero.module.scss'
 
 // 공백은 inline-block 안에서 사라지지 않도록 줄바꿈 없는 공백( )으로
 const letters = 'PLAY SQUASH'.split('').map((letter) => (letter === ' ' ? ' ' : letter))
