@@ -1,6 +1,6 @@
-import benefit01 from '../assets/images/home/img_benefit01.png'
-import benefit02 from '../assets/images/home/img_benefit02.png'
-import benefit03 from '../assets/images/home/img_benefit03.png'
+import benefit01 from '../assets/images/home/img_benefit01.webp'
+import benefit02 from '../assets/images/home/img_benefit02.webp'
+import benefit03 from '../assets/images/home/img_benefit03.webp'
 
 // 홈 화면에 들어가는 내용 데이터
 // 화면 코드와 내용을 나눠 두면, 문구만 바꿀 때 이 파일만 고치면 돼요
@@ -20,7 +20,6 @@ export const features = [
     number: '02',
     image: benefit02,
     imageAlt: '비 오는 창밖과 대비되는, 유리문 너머로 보이는 깨끗한 실내 스쿼시 코트',
-    highlight: false, // 가운데 카드만 블루로 강조
     title: '날씨 걱정 없는 실내 스포츠',
     description:
       '비·미세먼지·한파와 상관없이 사계절 내내. 코트 예약과 라켓 하나면 1:1로 바로 시작할 수 있어요.',

@@ -1,0 +1,110 @@
+@use '../styles/mixins' as m;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  background: var(--color-surface);
+  transition: background-color 0.25s;
+}
+
+// 펼쳐진 항목: Ink 배경 + 볼트 아이콘으로 '지금 읽는 곳'을 분명하게
+.open {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-surface);
+
+  .number,
+  .icon {
+    color: var(--color-volt);
+  }
+}
+
+.heading {
+  font-size: inherit;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 72px;
+  padding: 16px 26px;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+
+  @include m.mobile {
+    gap: 10px;
+    min-height: 60px;
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+}
+
+.number {
+  flex: none;
+  font-size: 18px;
+  color: var(--color-blue);
+}
+
+.question {
+  flex: 1;
+}
+
+.icon {
+  flex: none;
+}
+
+.panel {
+  padding: 0 26px 26px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
+  animation: open 0.3s ease-out;
+
+  @include m.mobile {
+    padding: 0 18px 18px;
+    font-size: 14px;
+  }
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--color-ink-2);
+  font-size: 14px;
+  color: var(--color-surface);
+
+  // 노트 앞의 빨간 막대 (틴 모양)
+  &::before {
+    content: '';
+    flex: none;
+    width: 10px;
+    height: 28px;
+    border-radius: 3px;
+    background: var(--color-red);
+  }
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

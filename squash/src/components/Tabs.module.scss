@@ -1,0 +1,49 @@
+@use '../styles/mixins' as m;
+
+.tablist {
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-line);
+
+  @include m.mobile {
+    width: 100%;
+    padding: 4px;
+  }
+}
+
+.tab {
+  min-height: 46px;
+  padding: 0 24px;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-sub-2);
+  white-space: nowrap;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    color: var(--color-ink);
+  }
+
+  @include m.mobile {
+    flex: 1;
+    min-height: 44px;
+    padding: 0 8px;
+    font-size: 14px;
+  }
+}
+
+// 선택된 탭
+.selected {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  font-weight: 700;
+
+  &:hover {
+    color: var(--color-surface);
+  }
+}

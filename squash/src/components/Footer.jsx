@@ -26,7 +26,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.top}>
-          <div className={styles.cta}>
+          <div>
             <h2 className={styles.ctaTitle}>첫 랠리, 오늘 시작해 볼까요?</h2>
             <Button to="/rules" variant="volt">
               규칙 가이드부터 보기

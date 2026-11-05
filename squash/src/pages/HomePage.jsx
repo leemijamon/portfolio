@@ -36,7 +36,6 @@ function HomePage() {
                 imageAlt={feature.imageAlt}
                 title={feature.title}
                 description={feature.description}
-                highlight={feature.highlight}
               />
             </Reveal>
           ))}
