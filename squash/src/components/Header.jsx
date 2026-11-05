@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import Logo from './Logo'
 import Button from './Button'
@@ -13,13 +13,22 @@ function Header() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
 
+  // 홈에서 조금이라도 스크롤하면 헤더에 배경을 깔아요
+  const [isScrolled, setIsScrolled] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 10)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const closeMenu = () => setIsMenuOpen(false)
 
   // NavLink는 현재 주소와 같으면 isActive가 true가 돼요
   const linkClass = ({ isActive }) => (isActive ? `${styles.link} ${styles.active}` : styles.link)
 
   return (
-    <header className={`${styles.header} ${isHome ? styles.onSky : ''}`}>
+    <header className={`${styles.header} ${isHome ? styles.onSky : ''} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
         <Link to="/" className={styles.logoLink} onClick={closeMenu} aria-label="FIRST RALLY 홈으로">
           <Logo theme={isHome ? 'onSky' : 'light'} />

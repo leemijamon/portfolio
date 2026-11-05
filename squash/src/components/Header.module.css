@@ -54,8 +54,18 @@
 
 /* ===== 홈: 하늘색 헤더 ===== */
 .onSky {
-  background: var(--color-sky);
+  /* 흐름에서 빼서 히어로 위에 겹치고, 배경은 투명하게 해서 하늘이 헤더 뒤까지 이어져요 */
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: transparent;
   border-bottom-color: transparent;
+  transition: background-color 0.25s;
+}
+
+/* 스크롤을 내리면 글씨가 읽히도록 하늘색 배경을 깔아요 */
+.onSky.scrolled {
+  background: var(--color-sky);
 }
 
 .onSky .link,

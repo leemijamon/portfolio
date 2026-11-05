@@ -12,10 +12,36 @@
 
 .stage {
   position: relative;
-  aspect-ratio: 1672 / 941;
-  overflow: hidden;
+  z-index: 1;
+  /* 가로만 잘라요. 세로는 열어 둬야 앞발이 하늘 아래로 튀어나올 수 있어요 */
+  overflow-x: clip;
+  /* 헤더(고정, 투명)가 놓일 자리: 하늘은 헤더 뒤까지 깔리고 그림은 그 아래에서 시작해요 */
+  padding-top: var(--header-h);
+}
+
+.canvas {
+  position: relative;
+  /*
+    하늘의 아래쪽 선 = 이 영역의 아래쪽 끝. 선수는 이 선에 걸쳐 놓여요
+    선수 머리가 글자와 겹치도록 낮고 넓은 비율(1671:568)로 잡았어요
+  */
+  aspect-ratio: 1671 / 568;
   container-type: inline-size;
-  background: var(--color-sky);
+  /*
+    첫 화면에 '하늘 + 선 아래로 튀어나온 앞발'까지 다 들어오게:
+    (그림 높이 0.34 + 앞발이 나온 높이 0.07) × 너비 ≤ 헤더를 뺀 화면 높이
+    → 너비 ≤ (화면 높이 - 헤더) × 1671 / 690
+    화면이 낮으면 그림이 그만큼 줄어들고 가운데 정렬 (양옆은 하늘이 채워요)
+  */
+  width: min(100%, calc((100svh - var(--header-h)) * 1671 / 690));
+  margin: 0 auto;
+}
+
+/* 하늘만 잘라내는 틀 (줌 아웃 애니메이션이 밖으로 새지 않게) */
+.skyClip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 
 /*
@@ -27,7 +53,7 @@
 .sky {
   position: absolute;
   inset: 0;
-  background: var(--color-sky) url('../../assets/main-bg.webp') center bottom / cover no-repeat;
+  background: var(--color-sky) url('../../assets/images/home/main-bg.webp') center bottom / cover no-repeat;
   animation: skyIn 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
@@ -40,15 +66,20 @@
   }
 }
 
-/* SQUASH 대형 글자: 한 글자씩 아래에서 올라옴 */
+/*
+  PLAY SQUASH 대형 글자: 한 글자씩 아래에서 올라옴
+  - 글자 폭을 헤더 내용 폭(컨테이너 1280px)에 맞춰요. 화면이 좁으면 양옆 여백(gutter)만 남기고 줄어들어요
+  - 4.887 = Anton 폰트에서 'PLAY SQUASH' 한 줄의 폭 (글자 크기의 4.887배)
+    → 글자 크기 = 원하는 폭 ÷ 4.887. 문구를 바꾸면 이 숫자도 다시 재야 해요
+*/
 .word {
   position: absolute;
   left: 0;
   right: 0;
-  top: 6.5%;
+  top: 2cqw;
   text-align: center;
   white-space: nowrap;
-  font-size: 31.5cqw;
+  font-size: calc(min(var(--container), 100cqw - var(--gutter) * 2) / 4.887);
   line-height: 0.82;
   color: var(--color-surface);
 }
@@ -70,11 +101,17 @@
   }
 }
 
-/* 바닥(흰 띠)과 그림자 */
+/* 바닥(흰 띠)과 그림자: 모바일에서만 써요 (PC는 하늘 아래 선이 바닥 역할) */
+.floor,
+.floorShadow {
+  display: none;
+}
+
 .floor {
   position: absolute;
-  left: 0;
-  right: 0;
+  /* 그림 영역이 줄어들어도 흰 띠는 화면 양끝까지 이어지게 (넘친 부분은 .stage가 잘라요) */
+  left: -100vw;
+  right: -100vw;
   bottom: 0;
   height: 7.5%;
   background: var(--color-surface);
@@ -91,16 +128,40 @@
   filter: blur(10px);
 }
 
-/* 선수 사진: 오른쪽에서 런지하며 들어옴 */
+/*
+  선수 사진: 오른쪽에서 런지하며 들어옴
+  - 사진(1671×941)에서 발 윗부분(위에서 79.17% 지점, 세로 745px)이 하늘 아래쪽 선과 만나요
+  - 그 선 아래로 내려가는 20.83%만큼을 bottom에 음수로 넣어서 맞춰요
+    (0.1173 = 941/1671 × 0.2083)
+*/
 .athlete {
   position: absolute;
-  left: 27%;
-  top: 22.4%;
-  width: 70%;
-  height: auto;
+  left: 42%;
+  --athlete-w: 52cqw; /* 이전 65cqw에서 20% 축소 */
+  bottom: calc(var(--athlete-w) * -0.1173);
+  width: var(--athlete-w);
+  aspect-ratio: 1671 / 941;
   filter: drop-shadow(-26px 34px 26px rgba(4, 22, 92, 0.38));
   transform-origin: 60% 100%;
   animation: lunge 1.15s cubic-bezier(0.16, 0.9, 0.24, 1) 0.55s both;
+}
+
+.athleteImg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 뒷발: 선 아래쪽을 잘라서 가려요 */
+.athleteBack {
+  clip-path: inset(0 0 20.83% 0);
+}
+
+/* 앞발: 발 주변(가로 38~59%, 세로 74.4%부터)만 남겨서 선 아래로 튀어나오게 */
+.athleteFront {
+  clip-path: inset(74.4% 41% 0 38%);
 }
 
 @keyframes lunge {
@@ -154,105 +215,6 @@
   }
 }
 
-/* 라켓에서 튀어나가는 공 + 꼬리 + 충격 링 */
-.ball,
-.trail,
-.ring {
-  position: absolute;
-  left: 17%;
-  top: 54%;
-  opacity: 0;
-}
-
-.ball {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5cqw;
-  width: 3.2cqw;
-  height: 3.2cqw;
-  margin: -1.6cqw 0 0 -1.6cqw;
-  border-radius: 50%;
-  background: var(--color-ink);
-  box-shadow: 0 10px 20px rgba(4, 22, 92, 0.35);
-  animation: shot 3.2s cubic-bezier(0.2, 0.7, 0.3, 1) 1.6s infinite;
-}
-
-.ball i {
-  width: 0.6cqw;
-  height: 0.6cqw;
-  border-radius: 50%;
-  background: var(--color-volt);
-}
-
-@keyframes shot {
-  0% {
-    opacity: 1;
-    transform: translate(0, 0) scale(0.8);
-  }
-  38% {
-    opacity: 1;
-    transform: translate(-15cqw, -15cqw) scale(1.4);
-  }
-  45% {
-    opacity: 0;
-    transform: translate(-18cqw, -18cqw) scale(1.5);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.trail {
-  width: 20cqw;
-  height: 3px;
-  transform-origin: 0 50%;
-  rotate: -135deg;
-  background: linear-gradient(90deg, var(--color-volt), rgba(215, 255, 63, 0));
-  animation: trail 3.2s ease-out 1.6s infinite;
-}
-
-@keyframes trail {
-  0% {
-    opacity: 0;
-    scale: 0 1;
-  }
-  10% {
-    opacity: 1;
-    scale: 1 1;
-  }
-  40% {
-    opacity: 0;
-    scale: 1.2 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.ring {
-  width: 7cqw;
-  height: 7cqw;
-  margin: -3.5cqw 0 0 -3.5cqw;
-  border: 3px solid var(--color-volt);
-  border-radius: 50%;
-  animation: ring 3.2s ease-out 1.6s infinite;
-}
-
-@keyframes ring {
-  0% {
-    transform: scale(0.3);
-    opacity: 1;
-  }
-  35% {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 /* 오른쪽 세로 글씨 */
 .vertical {
   position: absolute;
@@ -269,9 +231,12 @@
 /* ===== 제목과 버튼 ===== */
 .copy {
   position: absolute;
-  left: 48px;
-  top: 68%;
+  /* 헤더 로고의 왼쪽 선과 같은 기준: 컨테이너(1280px) 안쪽 시작점 */
+  left: max(var(--gutter), calc((100% - var(--container)) / 2));
+  /* 히어로 높이가 바뀌어도 하늘 아래쪽에서 일정하게 떨어지도록 아래 기준으로 */
+  bottom: 15%;
   max-width: 560px;
+  z-index: 2;
   color: var(--color-surface);
 }
 
@@ -280,7 +245,6 @@
   font-weight: 900;
   line-height: 1.18;
   letter-spacing: -0.035em;
-  text-shadow: 0 2px 24px rgba(4, 30, 100, 0.55);
 }
 
 /* 한 줄씩 아래에서 밀려 올라오는 효과: 바깥은 잘라내고 안쪽만 움직여요 */
@@ -328,9 +292,26 @@
   }
 }
 
+/*
+  ===== 태블릿: 가로가 좁아 카피가 선수·글자와 부딪히므로 그림 영역을 더 세로로 =====
+  이 구간은 한 화면에 다 넣는 것보다 겹치지 않는 게 우선이라 높이 제한을 풀어요
+*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .canvas {
+    aspect-ratio: 1671 / 1100;
+    width: 100%;
+  }
+}
+
 /* ===== 모바일: 무대는 고정 높이, 제목은 무대 아래 ===== */
 @media (max-width: 767px) {
+  /* 모바일은 발이 튀어나오는 효과 없이, 바닥 띠 위에 선수가 서 있어요 */
   .stage {
+    overflow: hidden;
+  }
+
+  .canvas {
+    width: auto;
     aspect-ratio: auto;
     height: 400px;
   }
@@ -342,8 +323,13 @@
 
   .word {
     top: 30px;
-    font-size: 124px;
+    font-size: calc((100cqw - var(--gutter) * 2) / 4.887);
     line-height: 0.86;
+  }
+
+  .floor,
+  .floorShadow {
+    display: block;
   }
 
   .floor {
@@ -361,14 +347,16 @@
   .athlete {
     left: -1%;
     top: 104px;
+    bottom: auto;
     width: 108%;
     filter: drop-shadow(-14px 20px 16px rgba(4, 22, 92, 0.35));
   }
 
-  /* 모바일에서는 공 애니메이션 위치가 사진과 맞지 않아 숨겨요 */
-  .ball,
-  .trail,
-  .ring {
+  .athleteBack {
+    clip-path: none;
+  }
+
+  .athleteFront {
     display: none;
   }
 
@@ -412,9 +400,6 @@
 
 /* 움직임 줄이기: 반복되는 장식 효과는 아예 숨김 */
 @media (prefers-reduced-motion: reduce) {
-  .ball,
-  .trail,
-  .ring,
   .streaks {
     display: none;
   }

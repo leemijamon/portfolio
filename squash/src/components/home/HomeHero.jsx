@@ -1,8 +1,9 @@
 import Button from '../Button'
-import athlete from '../../assets/squash-human.webp'
+import athlete from '../../assets/images/home/squash-human.webp'
 import styles from './HomeHero.module.css'
 
-const letters = ['S', 'Q', 'U', 'A', 'S', 'H']
+// 공백은 inline-block 안에서 사라지지 않도록 줄바꿈 없는 공백( )으로
+const letters = 'PLAY SQUASH'.split('').map((letter) => (letter === ' ' ? ' ' : letter))
 
 // 공이 지나가는 속도선 (위치·지연·길이만 다름 → 데이터로 반복)
 const streaks = [
@@ -17,49 +18,54 @@ function HomeHero() {
     <section className={styles.hero}>
       <div className={styles.stage}>
         {/* ↓ 장식 요소들은 화면 낭독기가 읽지 않도록 aria-hidden */}
-        <div className={styles.sky} aria-hidden="true" />
-
-        <div className={`display ${styles.word}`} aria-hidden="true">
-          {letters.map((letter, index) => (
-            // style에 CSS 변수(--i)를 넘겨서 글자마다 등장 시간을 다르게
-            <span key={index} className={styles.letter} style={{ '--i': index }}>
-              {letter}
-            </span>
-          ))}
+        <div className={styles.skyClip} aria-hidden="true">
+          <div className={styles.sky} />
         </div>
 
-        <div className={styles.floor} aria-hidden="true" />
-        <span className={styles.floorShadow} aria-hidden="true" />
+        {/* canvas: 헤더 아래 실제 그림 영역. 글자·사진의 위치는 이 안에서 계산해요 */}
+        <div className={styles.canvas}>
+          <div className={`display ${styles.word}`} aria-hidden="true">
+            {letters.map((letter, index) => (
+              // style에 CSS 변수(--i)를 넘겨서 글자마다 등장 시간을 다르게
+              <span key={index} className={styles.letter} style={{ '--i': index }}>
+                {letter}
+              </span>
+            ))}
+          </div>
 
-        <div className={styles.streaks} aria-hidden="true">
-          {streaks.map((streak) => (
-            <span
-              key={streak.top}
-              className={`${styles.streak} ${streak.volt ? styles.streakVolt : ''}`}
-              style={{ top: streak.top, width: streak.width, animationDelay: streak.delay }}
+          <div className={styles.floor} aria-hidden="true" />
+          <span className={styles.floorShadow} aria-hidden="true" />
+
+          <div className={styles.streaks} aria-hidden="true">
+            {streaks.map((streak) => (
+              <span
+                key={streak.top}
+                className={`${styles.streak} ${streak.volt ? styles.streakVolt : ''}`}
+                style={{ top: streak.top, width: streak.width, animationDelay: streak.delay }}
+              />
+            ))}
+          </div>
+
+          {/*
+            같은 사진을 두 장 겹쳐요 (PC)
+            - back: 하늘 아래쪽 선에서 잘라 → 뒷발은 선 아래로 가려짐
+            - front: 앞발 부분만 잘라서 → 선 아래로 튀어나옴
+          */}
+          <div className={styles.athlete}>
+            <img
+              className={`${styles.athleteImg} ${styles.athleteBack}`}
+              src={athlete}
+              alt="스쿼시 선수가 낮게 런지하며 라켓을 뻗어 공을 받아치는 모습"
+              width="1671"
+              height="941"
             />
-          ))}
+            <img className={`${styles.athleteImg} ${styles.athleteFront}`} src={athlete} alt="" aria-hidden="true" />
+          </div>
+
+          <p className={styles.vertical} aria-hidden="true">
+            SQUASH FOR BEGINNERS · 입문 가이드
+          </p>
         </div>
-
-        <img
-          className={styles.athlete}
-          src={athlete}
-          alt="스쿼시 선수가 낮게 런지하며 라켓을 뻗어 공을 받아치는 모습"
-          width="1671"
-          height="941"
-        />
-
-        {/* 라켓에 맞고 튀어나가는 공 */}
-        <span className={styles.trail} aria-hidden="true" />
-        <span className={styles.ring} aria-hidden="true" />
-        <span className={styles.ball} aria-hidden="true">
-          <i />
-          <i />
-        </span>
-
-        <p className={styles.vertical} aria-hidden="true">
-          SQUASH FOR BEGINNERS · 입문 가이드
-        </p>
       </div>
 
       <div className={styles.copy}>
