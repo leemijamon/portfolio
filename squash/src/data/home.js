@@ -1,3 +1,7 @@
+import benefit01 from '../assets/images/home/img_benefit01.png'
+import benefit02 from '../assets/images/home/img_benefit02.png'
+import benefit03 from '../assets/images/home/img_benefit03.png'
+
 // 홈 화면에 들어가는 내용 데이터
 // 화면 코드와 내용을 나눠 두면, 문구만 바꿀 때 이 파일만 고치면 돼요
 
@@ -5,7 +9,8 @@ export const features = [
   {
     id: 'intensity',
     number: '01',
-    art: 'pulse',
+    image: benefit01,
+    imageAlt: '낮게 몸을 던져 라켓을 뻗어 공을 받아치는 스쿼시 선수',
     title: '짧은 시간, 확실한 운동량',
     description:
       '쉴 틈 없이 이어지는 랠리 덕분에 한 게임만 해도 숨이 찹니다. 퇴근 후 짧게 즐기는 운동으로 제격이에요.',
@@ -13,8 +18,9 @@ export const features = [
   {
     id: 'indoor',
     number: '02',
-    art: 'wall',
-    highlight: true, // 가운데 카드만 블루로 강조
+    image: benefit02,
+    imageAlt: '비 오는 창밖과 대비되는, 유리문 너머로 보이는 깨끗한 실내 스쿼시 코트',
+    highlight: false, // 가운데 카드만 블루로 강조
     title: '날씨 걱정 없는 실내 스포츠',
     description:
       '비·미세먼지·한파와 상관없이 사계절 내내. 코트 예약과 라켓 하나면 1:1로 바로 시작할 수 있어요.',
@@ -22,7 +28,8 @@ export const features = [
   {
     id: 'strategy',
     number: '03',
-    art: 'angle',
+    image: benefit03,
+    imageAlt: '앞벽과 옆벽을 맞고 꺾여 돌아오는 공의 궤적을 따라 라켓을 휘두르는 선수',
     title: '힘보다 각도, 벽이 만드는 전략',
     description:
       '앞벽과 옆벽을 이용해 공을 상대에게서 멀리 보내는 게임. 힘이 약해도 위치와 타이밍으로 이길 수 있어요.',

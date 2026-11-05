@@ -33,8 +33,24 @@
     → 너비 ≤ (화면 높이 - 헤더) × 1671 / 690
     화면이 낮으면 그림이 그만큼 줄어들고 가운데 정렬 (양옆은 하늘이 채워요)
   */
-  width: min(100%, calc((100svh - var(--header-h)) * 1671 / 690));
+  --cw: min(100vw, calc((100svh - var(--header-h)) * 1671 / 690));
+  width: min(100%, var(--cw));
   margin: 0 auto;
+}
+
+/*
+  화면이 낮거나 좁아서 그림이 납작해지면 PLAY SQUASH 글자와 아래 제목(copy)이 겹쳐요
+  → 그림 영역의 최소 높이를 '글자 아래 끝 + 간격 + 제목·버튼 높이'로 보장해요 (모자라면 세로로 늘어남)
+  - 제목은 hero 아래에서 15% 지점에 닿아 있으므로, 전체 높이의 85%가 위 내용을 담아야 해요
+  - 글자 크기 계산은 .word 와 같은 식 (--cw = 그림 영역 너비)
+*/
+@media (min-width: 768px) {
+  .canvas {
+    --word-fs: calc(min(var(--container), var(--cw) - var(--gutter) * 2) / 4.887);
+    --word-bottom: calc(var(--cw) * 0.02 + var(--word-fs) * 0.82);
+    --copy-h: calc(clamp(32px, 3.1vw, 44px) * 2.36 + 8px + 20px + 60px);
+    min-height: calc((var(--header-h) + var(--word-bottom) + 24px + var(--copy-h)) / 0.85 - var(--header-h));
+  }
 }
 
 /* 하늘만 잘라내는 틀 (줌 아웃 애니메이션이 밖으로 새지 않게) */
@@ -299,6 +315,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .canvas {
     aspect-ratio: 1671 / 1100;
+    --cw: 100vw;
     width: 100%;
   }
 }

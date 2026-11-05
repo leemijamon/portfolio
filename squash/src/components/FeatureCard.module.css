@@ -11,48 +11,34 @@
 
 .card:hover {
   transform: translateY(-4px);
-}
-
-/* 가운데 강조 카드 */
-.highlight {
   background: var(--color-blue);
   color: var(--color-surface);
 }
 
+.card:hover .number {
+  color: var(--color-volt);
+}
+
+.card:hover .description {
+  color: rgba(255, 255, 255, 0.88);
+}
+
 .visual {
-  position: relative;
-  height: 200px;
+  aspect-ratio: 16 / 9;
   border-radius: 20px;
   overflow: hidden;
 }
 
-.pulse {
-  background: var(--color-ink);
-}
-.wall {
-  background: var(--color-surface);
-}
-.angle {
-  background: var(--color-volt);
-}
-
-.visualLabel {
-  position: absolute;
-  left: 20px;
-  top: 18px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--color-surface);
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .number {
   font-size: 40px;
   color: var(--color-blue);
-}
-
-.highlight .number {
-  color: var(--color-volt);
 }
 
 .title {
@@ -67,9 +53,7 @@
   color: var(--color-sub);
 }
 
-.highlight .description {
-  color: rgba(255, 255, 255, 0.88);
-}
+
 
 @media (max-width: 767px) {
   .card {
@@ -78,7 +62,6 @@
     border-radius: 24px;
   }
   .visual {
-    height: 140px;
     border-radius: 16px;
   }
   .number {

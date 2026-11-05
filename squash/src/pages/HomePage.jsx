@@ -32,7 +32,8 @@ function HomePage() {
             <Reveal key={feature.id} delay={index * 120}>
               <FeatureCard
                 number={feature.number}
-                art={feature.art}
+                image={feature.image}
+                imageAlt={feature.imageAlt}
                 title={feature.title}
                 description={feature.description}
                 highlight={feature.highlight}
@@ -42,31 +43,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 02 입문 가이드 */}
-      <section className={styles.guide}>
-        <div className="container">
-          <div className={styles.sectionHead}>
-            <div>
-              <p className={`eyebrow ${styles.eyebrowVolt}`}>02 입문 가이드</p>
-              <h2 className={styles.sectionTitle}>
-                무엇부터 알면 될까요?
-                <br />세 가지 가이드로 시작하세요
-              </h2>
-            </div>
-            <p className={`${styles.sectionDesc} ${styles.descOnDark}`}>
-              긴 글 대신 그림과 카드로 정리했어요. 순서대로 읽어도, 필요한 것만 골라 봐도 좋아요.
-            </p>
-          </div>
-          <div className={styles.grid3}>
-            {guides.map((guide, index) => (
-              <Reveal key={guide.id} delay={index * 120}>
-                {/* {...guide}: guide 객체의 값을 props로 한 번에 넘기기 */}
-                <GuideCard {...guide} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* 03 점수 계산기 소개 */}
       <section className={`container ${styles.scoreWrap}`}>
