@@ -1,0 +1,41 @@
+// 그림은 부모 상자 폭에 맞춰 줄어들어요
+.svg {
+  width: 100%;
+  max-width: 230px;
+  height: auto;
+}
+
+// 스쿼시 공: 검은 공 + 색 점
+.ball {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  flex: none;
+  border-radius: 50%;
+  background: var(--color-ink);
+  box-shadow: 0 18px 30px rgba(11, 18, 32, 0.25);
+
+  i {
+    width: 16%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+}
+
+.lg {
+  // 부모가 --ball-size를 정해 주면 그 크기로 (없으면 110px)
+  width: var(--ball-size, 110px);
+  height: var(--ball-size, 110px);
+}
+
+.md {
+  width: 64px;
+  height: 64px;
+}
+
+.sm {
+  width: 40px;
+  height: 40px;
+  box-shadow: none;
+}

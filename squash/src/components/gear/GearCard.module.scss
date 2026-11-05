@@ -1,0 +1,234 @@
+@use '../../styles/mixins' as m;
+
+.card {
+  position: relative; // 버튼 ::after가 카드 전체를 덮는 기준
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s,
+    border-color 0.25s;
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--color-blue);
+    box-shadow: 0 16px 32px rgba(11, 18, 32, 0.1);
+    transform: translateY(-4px);
+  }
+
+  // 모바일: 그림 왼쪽 + 글 오른쪽의 가로 카드
+  @include m.mobile {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    border-radius: 20px;
+
+    &:hover,
+    &:focus-within {
+      transform: none;
+    }
+  }
+}
+
+// ===== 그림 영역 =====
+.visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  padding: 0 24px;
+
+  @include m.mobile {
+    flex: none;
+    width: 104px;
+    height: 104px;
+    padding: 12px;
+    border-radius: 14px;
+
+    --ball-size: 60px; // 작은 칸에서는 공도 작게 (GearArt가 이 값을 써요)
+  }
+}
+
+// 배경색: data/gear.js의 tone 값과 이름이 같아요
+.blue {
+  background: var(--color-blue);
+}
+.ink {
+  background: var(--color-ink);
+}
+.wall {
+  background: var(--color-wall);
+}
+.blueSoft {
+  background: var(--color-blue-soft);
+}
+.redSoft {
+  background: #ffecea;
+}
+.yellowSoft {
+  background: #fff6c7;
+}
+
+.badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: var(--color-volt);
+  color: var(--color-ink);
+  font-size: 12px;
+  font-weight: 700;
+
+  // 모바일은 그림 칸이 작아서 숨기고, 아래 태그 줄로 충분해요
+  @include m.mobile {
+    display: none;
+  }
+}
+
+// ===== 글 영역 =====
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 24px 24px;
+
+  @include m.mobile {
+    gap: 6px;
+    padding: 0 24px 0 0; // 오른쪽 화살표 자리
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  @include m.mobile {
+    gap: 4px;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: var(--color-wall-2);
+  color: var(--color-sub-2);
+  font-size: 12px;
+  font-weight: 700;
+
+  @include m.mobile {
+    height: 22px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+}
+
+.name {
+  margin-top: 4px;
+  font-size: 20px;
+
+  @include m.mobile {
+    margin-top: 0;
+    font-size: 16px;
+  }
+}
+
+.summary {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-sub);
+
+  @include m.mobile {
+    font-size: 13px;
+    line-height: 1.5;
+    // 두 줄까지만 보여주고 말줄임
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--color-line);
+  font-size: 13px;
+  color: var(--color-sub);
+
+  @include m.mobile {
+    display: none;
+  }
+}
+
+.more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  margin-top: auto; // 카드 높이가 달라도 버튼은 맨 아래에
+  padding: 0 16px;
+  border-radius: 12px;
+  background: var(--color-wall);
+  font-size: 14px;
+  font-weight: 700;
+
+  // 카드 전체를 덮는 투명한 클릭 영역
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  // 포커스 테두리는 카드(:focus-within)가 대신 보여줘요
+  &:focus-visible {
+    outline: none;
+  }
+
+  .card:hover & {
+    background: var(--color-ink);
+    color: var(--color-surface);
+  }
+
+  // 모바일: 글자는 숨기고 화살표만 카드 오른쪽 가운데에
+  @include m.mobile {
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+
+    > span:first-child {
+      display: none;
+    }
+
+    > span:last-child {
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      font-size: 18px;
+    }
+
+    .card:hover & {
+      background: none;
+      color: var(--color-blue);
+    }
+  }
+}

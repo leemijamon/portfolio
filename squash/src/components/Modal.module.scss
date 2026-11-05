@@ -1,0 +1,95 @@
+@use '../styles/mixins' as m;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000; // 고정 헤더보다 위
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: rgba(11, 18, 32, 0.62);
+  animation: fade 0.2s ease-out;
+
+  // 모바일: 아래에서 올라오는 시트
+  @include m.mobile {
+    align-items: flex-end;
+    padding: 24px 0 0;
+  }
+}
+
+.dialog {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: 100%;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: 0 40px 100px rgba(11, 18, 32, 0.45);
+  animation: pop 0.25s ease-out;
+
+  @include m.mobile {
+    border-radius: 28px 28px 0 0;
+    animation-name: slideUp;
+  }
+}
+
+// 모바일 시트 위의 손잡이 모양
+.handle {
+  display: none;
+
+  @include m.mobile {
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin: 10px auto 0;
+    border-radius: 3px;
+    background: var(--color-line-strong);
+  }
+}
+
+.close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-wall);
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: var(--color-line);
+  }
+
+  @include m.mobile {
+    top: 20px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+}

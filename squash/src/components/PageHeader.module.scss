@@ -7,6 +7,28 @@
   color: var(--color-surface);
 }
 
+// 볼트 배너: 글자를 Ink로 바꿔요 (볼트 위 흰 글자는 잘 안 보여서)
+.volt {
+  background: var(--color-volt);
+  color: var(--color-ink);
+
+  .watermark {
+    color: rgba(11, 18, 32, 0.07);
+  }
+
+  .breadcrumb {
+    color: var(--color-sub-2);
+
+    b {
+      color: var(--color-ink);
+    }
+  }
+
+  .description {
+    color: var(--color-sub-2);
+  }
+}
+
 .watermark {
   position: absolute;
   right: -10px;
