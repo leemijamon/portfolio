@@ -7,6 +7,9 @@ import Footer from './Footer'
 function Layout() {
   const { pathname, hash } = useLocation()
 
+  // 점수 계산기는 앱처럼 쓰는 화면이라 푸터를 숨겨요
+  const hideFooter = pathname === '/score'
+
   // 페이지를 옮기면 스크롤 위치를 정리해요
   // - 주소에 #이 있으면(예: /#checklist) 그 요소로 이동
   // - 없으면 맨 위로 (React Router는 화면만 바꾸기 때문에 직접 올려 줘야 해요)
@@ -31,7 +34,7 @@ function Layout() {
       <main id="main">
         <Outlet />
       </main>
-      <Footer />
+      {!hideFooter && <Footer />}
     </>
   )
 }
