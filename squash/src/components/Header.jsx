@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import Logo from './Logo'
 import Button from './Button'
 import menus from '../data/menus'
@@ -9,9 +9,19 @@ function Header() {
   // state: 모바일 메뉴가 열려 있는지 (true / false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const closeMenu = () => setIsMenuOpen(false)
+
   // 홈에서는 히어로 하늘색과 이어지는 파란 헤더를 써요
-  const { pathname } = useLocation()
+  const { pathname, key } = useLocation()
   const isHome = pathname === '/'
+
+  // 뒤로 가기: 아이폰에는 뒤로 가기 버튼이 없어서 모바일 헤더에 직접 둬요
+  const navigate = useNavigate()
+  // key가 'default'면 이 사이트에서 처음 연 페이지(주소 직접 입력 등) → 뒤로 갈 곳이 없으니 홈으로
+  const goBack = () => {
+    closeMenu()
+    navigate(key === 'default' ? '/' : -1)
+  }
 
   // 홈에서 조금이라도 스크롤하면 헤더에 배경을 깔아요
   const [isScrolled, setIsScrolled] = useState(false)
@@ -22,14 +32,21 @@ function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const closeMenu = () => setIsMenuOpen(false)
-
   // NavLink는 현재 주소와 같으면 isActive가 true가 돼요
   const linkClass = ({ isActive }) => (isActive ? `${styles.link} ${styles.active}` : styles.link)
 
   return (
     <header className={`${styles.header} ${isHome ? styles.onSky : ''} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
+        {/* 모바일에서만 보이는 뒤로 가기 버튼 (홈에는 뒤로 갈 곳이 없어서 숨김) */}
+        {!isHome && (
+          <button type="button" className={styles.backButton} aria-label="뒤로 가기" onClick={goBack}>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        )}
+
         <Link to="/" className={styles.logoLink} onClick={closeMenu} aria-label="FIRST RALLY 홈으로">
           <Logo theme={isHome ? 'onSky' : 'light'} />
         </Link>

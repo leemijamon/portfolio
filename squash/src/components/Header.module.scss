@@ -87,6 +87,15 @@
   box-shadow: inset 0 -3px 0 var(--color-volt);
 }
 
+.backButton {
+  display: none;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink);
+}
+
 .menuButton {
   display: none;
   width: 48px;
@@ -106,6 +115,7 @@
 /* ===== 모바일 ===== */
 @include m.mobile {
   .inner {
+    gap: 0;
     padding: 0 8px 0 20px;
   }
 
@@ -116,6 +126,14 @@
   .menuButton {
     display: flex;
     margin-left: auto;
+  }
+
+  /* 버튼 안쪽 여백(11px)만큼 당겨서 아이콘이 화면 왼쪽 가장자리에 가깝게 */
+  .backButton {
+    display: flex;
+    flex: none;
+    margin-left: -12px;
+    margin-right: -4px;
   }
 
   /*

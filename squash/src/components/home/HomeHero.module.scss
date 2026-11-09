@@ -46,7 +46,7 @@
   - 제목은 hero 아래에서 15% 지점에 닿아 있으므로, 전체 높이의 85%가 위 내용을 담아야 해요
   - 글자 크기 계산은 .word 와 같은 식 (--cw = 그림 영역 너비)
 */
-@include m.tablet-up {
+@include m.desktop {
   .canvas {
     --word-fs: calc(min(var(--container), var(--cw) - var(--gutter) * 2) / 4.887);
     --word-bottom: calc(var(--cw) * 0.02 + var(--word-fs) * 0.82);
@@ -100,6 +100,15 @@
   font-size: calc(min(var(--container), 100cqw - var(--gutter) * 2) / 4.887);
   line-height: 0.82;
   color: var(--color-surface);
+}
+
+/* PC: 두 단어가 한 줄로 (단어 사이는 Anton 공백 폭) / 모바일: 한 줄씩 */
+.wordLine {
+  display: inline-block;
+
+  & + & {
+    margin-left: 0.23em; margin-top: 0.1em;
+  }
 }
 
 .letter {
@@ -310,29 +319,16 @@
   }
 }
 
-/*
-  ===== 태블릿: 가로가 좁아 카피가 선수·글자와 부딪히므로 그림 영역을 더 세로로 =====
-  이 구간은 한 화면에 다 넣는 것보다 겹치지 않는 게 우선이라 높이 제한을 풀어요
-*/
-@include m.tablet-only {
-  .canvas {
-    aspect-ratio: 1671 / 1100;
-    --cw: 100vw;
-    width: 100%;
-  }
-}
-
-/* ===== 모바일: 무대는 고정 높이, 제목은 무대 아래 ===== */
-@include m.mobile {
-  /* 모바일은 발이 튀어나오는 효과 없이, 바닥 띠 위에 선수가 서 있어요 */
-  .stage {
-    overflow: hidden;
-  }
-
+/* ===== 모바일·태블릿(1023px 이하): 무대 위에 PLAY / SQUASH 두 줄, 제목은 무대 아래 ===== */
+@include m.until-desktop {
+  /*
+    PC와 같은 구조: 하늘 아래쪽 선에 선수가 걸쳐 있고,
+    앞발은 선 아래로 튀어나오고 뒷발은 가려져요 (.stage의 세로는 열려 있음)
+    모든 크기를 너비(cqw) 기준으로 잡아서 화면이 바뀌어도 비율이 같아요
+  */
   .canvas {
     width: auto;
-    aspect-ratio: auto;
-    height: 400px;
+    aspect-ratio: 1; /* 선수는 아래 기준, 글자는 위 기준 → 높이로 겹치는 정도를 조절해요 */
   }
 
   /* 모바일은 화면이 좁아서 구름이 많은 오른쪽을 더 보여줘요 */
@@ -340,43 +336,49 @@
     background-position: 70% bottom;
   }
 
+  /*
+    두 줄: 가장 긴 줄(SQUASH)의 폭을 (화면 폭 - 양옆 여백)에 맞춰요
+    2.88 = Anton 폰트에서 'SQUASH'의 폭 (글자 크기의 2.88배). 문구를 바꾸면 다시 재야 해요
+  */
   .word {
-    top: 30px;
-    font-size: calc((100cqw - var(--gutter) * 2) / 4.887);
+    top: 10cqw;
+    /* 왼쪽 정렬 + 양옆 여백 10cqw: 글자는 여백을 뺀 폭에 맞춰요 */
+    left: 10cqw;
+    right: 10cqw;
+    text-align: left;
+    font-size: calc(80cqw / 2.88);
     line-height: 0.86;
   }
 
-  .floor,
-  .floorShadow {
+  .wordLine {
     display: block;
+
+    & + & {
+      margin-left: 0;
+    }
   }
 
-  .floor {
-    height: 34px;
-  }
-
-  .floorShadow {
-    left: 46%;
-    bottom: 20px;
-    width: 50%;
-    height: 16px;
-    filter: blur(8px);
-  }
-
+  /* 선수가 SQUASH 글자와 겹치도록 크게 (글자보다 앞에 그려져요) */
   .athlete {
+    --athlete-w: 108cqw;
     left: -1%;
-    top: 104px;
-    bottom: auto;
-    width: 108%;
     filter: drop-shadow(-14px 20px 16px rgba(4, 22, 92, 0.35));
   }
 
-  .athleteBack {
-    clip-path: none;
-  }
+  /*
+    태블릿(768~1023px): 큰 글자 양옆 여백을 반으로(5cqw), 글자 크기는 여백 기준 폭(31.25cqw)보다 20% 작게
+    → 선수 머리가 "SH" 아래쪽에 살짝 겹치도록 하늘 높이를 줄여요
+  */
+  @include m.tablet-only {
+    .canvas {
+      aspect-ratio: 20 / 19;
+    }
 
-  .athleteFront {
-    display: none;
+    .word {
+      left: 5cqw;
+      right: 5cqw;
+      font-size: 25cqw;
+    }
   }
 
   .vertical {
@@ -389,7 +391,8 @@
   .copy {
     position: static;
     max-width: none;
-    padding: 8px 20px 8px;
+    /* 위 여백: 선 아래로 튀어나온 앞발이 들어갈 자리 */
+    padding: 17vw 20px 8px;
     color: var(--color-ink);
   }
 
@@ -407,6 +410,18 @@
   .buttons > * {
     width: 100%;
     min-height: 56px;
+  }
+
+  /* 태블릿(768px~)은 폭이 넉넉해서 버튼을 좌우로 나란히 */
+  @include m.tablet-up {
+    .buttons {
+      flex-direction: row;
+    }
+
+    .buttons > * {
+      width: auto;
+      padding: 0 36px;
+    }
   }
 
   /* 흰 배경 위로 내려왔으니 '시작하기'는 블루 버튼으로 */
