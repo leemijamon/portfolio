@@ -1,0 +1,21 @@
+.level {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dots {
+  display: inline-flex;
+  gap: 4px;
+
+  i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-line-strong);
+  }
+
+  .filled {
+    background: var(--color-blue);
+  }
+}

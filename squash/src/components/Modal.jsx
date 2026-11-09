@@ -5,7 +5,8 @@ import styles from './Modal.module.scss'
 // - 부모가 열려 있을 때만 그려요: {selected && <Modal ...>}
 // - labelledBy: 모달 제목 요소의 id (화면 낭독기가 제목을 읽어요)
 // - onClose: 닫기 버튼, 바깥 어두운 영역, Esc 키에서 불러요
-function Modal({ labelledBy, onClose, children }) {
+// - size: 'lg'(기본, 장비 상세) | 'sm'(확인 창)
+function Modal({ labelledBy, onClose, size = 'lg', children }) {
   const closeButtonRef = useRef(null)
 
   // ① 열릴 때 한 번: 뒤 화면 스크롤 막기 + 닫기 버튼으로 포커스 이동
@@ -37,7 +38,7 @@ function Modal({ labelledBy, onClose, children }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={labelledBy}
-        className={styles.dialog}
+        className={`${styles.dialog} ${styles[size]}`}
         onClick={(event) => event.stopPropagation()}
       >
         <span className={styles.handle} aria-hidden="true" />

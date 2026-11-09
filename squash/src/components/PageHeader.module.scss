@@ -7,6 +7,15 @@
   color: var(--color-surface);
 }
 
+// 잉크 배너 (샷 용어 사전): 글자는 흰색 그대로, 워터마크만 옅게
+.ink {
+  background: var(--color-ink);
+
+  .watermark {
+    color: rgba(255, 255, 255, 0.05);
+  }
+}
+
 // 볼트 배너: 글자를 Ink로 바꿔요 (볼트 위 흰 글자는 잘 안 보여서)
 .volt {
   background: var(--color-volt);

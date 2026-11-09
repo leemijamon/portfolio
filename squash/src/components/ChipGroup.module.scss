@@ -6,7 +6,9 @@
   gap: 8px;
 
   // 모바일: 칩이 넘치면 가로로 밀어서 봐요
+  // (max-width가 없으면 칩 길이만큼 부모를 밀어내서 화면이 옆으로 넘쳐요)
   @include m.mobile {
+    max-width: 100%;
     overflow-x: auto;
     scrollbar-width: none;
   }

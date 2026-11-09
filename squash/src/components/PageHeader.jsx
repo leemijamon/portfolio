@@ -4,7 +4,7 @@ import styles from './PageHeader.module.scss'
 // 각 페이지 맨 위의 블루 배너
 // - watermark: 배경에 크게 깔리는 영문 단어 (예: RULES)
 // - crumb: 경로에 보일 페이지 이름 (없으면 title을 써요)
-// - theme: 배너 색 'blue'(기본) | 'volt'(장비 가이드)
+// - theme: 배너 색 'blue'(기본) | 'volt'(장비 가이드) | 'ink'(샷 용어 사전)
 // - children: 배너 아래쪽에 넣을 내용 (예: 페이지 안 이동 버튼)
 function PageHeader({ theme = 'blue', watermark, crumb, title, description, children }) {
   return (

@@ -1,0 +1,284 @@
+@use '../../styles/mixins' as m;
+
+// GameEnd(게임 종료)와 MatchResult(경기 결과)가 함께 쓰는 스타일
+
+.screen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  animation: rise 0.35s ease-out;
+
+  @include m.until-desktop {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @include m.mobile {
+    padding-top: 16px;
+    padding-bottom: 40px;
+  }
+}
+
+// ===== 왼쪽: 결과 크게 =====
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 48px 32px;
+  border-radius: var(--radius-lg);
+  background: var(--color-blue);
+  text-align: center;
+
+  @include m.mobile {
+    padding: 32px 20px;
+    border-radius: 24px;
+  }
+}
+
+.winnerHero {
+  background: var(--color-volt);
+  color: var(--color-ink);
+
+  .eyebrow {
+    color: var(--color-ink);
+  }
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-volt);
+}
+
+.sub {
+  font-size: 15px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  outline: none; // 프로그램으로 준 포커스라 테두리는 숨겨요
+}
+
+.bigScore {
+  margin: 8px 0;
+  font-size: clamp(88px, 12vw, 160px);
+  line-height: 0.9;
+}
+
+.stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(11, 18, 32, 0.2);
+
+  dt {
+    font-size: 13px;
+    opacity: 0.7;
+  }
+
+  dd {
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 900;
+  }
+}
+
+// ===== 오른쪽: 기록과 버튼 =====
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  background: var(--color-ink-2);
+
+  @include m.mobile {
+    gap: 16px;
+    padding: 22px 18px;
+    border-radius: 24px;
+  }
+}
+
+.panelTitle {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.gameScore {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  > span {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  b {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 18px;
+  }
+
+  .display {
+    font-size: 40px;
+    color: var(--color-volt);
+  }
+}
+
+.break {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+
+  .display {
+    font-size: 32px;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-surface);
+  }
+}
+
+.small {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+// 게임별 점수 표
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+
+  th,
+  td {
+    padding: 14px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  thead th {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  tbody th {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  td {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  // .table 안에 두어야 위의 td 색보다 우선해요 (선택자 우선순위)
+  .colA {
+    color: #8fa8ff;
+  }
+
+  // 그 게임을 이긴 쪽 점수
+  .won {
+    color: var(--color-volt);
+  }
+
+  .note {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  @include m.mobile {
+    font-size: 13px;
+
+    th,
+    td {
+      padding: 12px 4px;
+    }
+
+    tbody th {
+      font-size: 15px;
+    }
+
+    td {
+      font-size: 17px;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.primary,
+.secondary {
+  flex: 1 1 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 0 20px;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 900;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.primary {
+  background: var(--color-volt);
+  color: var(--color-ink);
+}
+
+.secondary {
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.4);
+}
+
+.textButton {
+  flex-basis: 100%;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: var(--color-surface);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}

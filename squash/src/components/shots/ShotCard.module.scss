@@ -1,0 +1,185 @@
+@use '../../styles/mixins' as m;
+
+.card {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+
+  &:hover {
+    border-color: var(--color-blue);
+    box-shadow: 0 16px 32px rgba(11, 18, 32, 0.08);
+    transform: translateY(-3px);
+  }
+}
+
+// ===== 검색 결과: 그림 왼쪽 + 글 오른쪽 =====
+.row {
+  align-items: center;
+  padding: 20px;
+  border-radius: var(--radius-md);
+
+  .diagram {
+    width: 120px;
+    height: 150px;
+    padding: 12px 18px;
+  }
+
+  @include m.mobile {
+    gap: 14px;
+    padding: 12px;
+    border-radius: 20px;
+
+    .diagram {
+      width: 84px;
+      height: 104px;
+      padding: 8px 12px;
+    }
+  }
+}
+
+// ===== 기본 샷: 그림 위 + 글 아래 =====
+.tile {
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 20px;
+
+  .diagram {
+    height: 120px;
+    padding: 10px;
+    background: var(--color-wall);
+
+    svg {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  .titleRow {
+    justify-content: space-between;
+  }
+
+  @include m.mobile {
+    gap: 8px;
+    padding: 12px;
+    border-radius: 16px;
+
+    .diagram {
+      height: 88px;
+    }
+
+    .titleRow {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .summary {
+      display: none;
+    }
+  }
+}
+
+.diagram {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: var(--color-wall-2);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+
+  @include m.mobile {
+    gap: 4px;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: var(--color-wall-2);
+  color: var(--color-sub-2);
+  font-size: 12px;
+  font-weight: 700;
+
+  @include m.mobile {
+    height: 22px;
+    font-size: 11px;
+  }
+}
+
+.tagBlue {
+  background: var(--color-blue);
+  color: var(--color-surface);
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  width: 100%;
+}
+
+.name {
+  font-size: 20px;
+
+  // 검색어 강조
+  mark {
+    padding: 0 2px;
+    border-radius: 4px;
+    background: var(--color-volt);
+    color: var(--color-ink);
+  }
+
+  .tile & {
+    font-size: 18px;
+  }
+
+  @include m.mobile {
+    font-size: 16px;
+
+    .tile & {
+      font-size: 15px;
+    }
+  }
+}
+
+.en {
+  font-size: 15px;
+  color: var(--color-sub);
+
+  @include m.mobile {
+    font-size: 12px;
+  }
+}
+
+.summary {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-sub);
+
+  .tile & {
+    font-size: 13px;
+  }
+
+  @include m.mobile {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}

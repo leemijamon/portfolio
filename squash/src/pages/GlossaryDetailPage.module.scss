@@ -1,0 +1,575 @@
+@use '../styles/mixins' as m;
+
+// ===== 없는 용어 =====
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding-top: 96px;
+  padding-bottom: 120px;
+
+  h1 {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 900;
+  }
+
+  p:not([class]) {
+    margin-bottom: 8px;
+    color: var(--color-sub);
+  }
+}
+
+// ===== 상단 =====
+.hero {
+  padding-top: 32px;
+  padding-bottom: 88px;
+
+  @include m.mobile {
+    padding-top: 12px;
+    padding-bottom: 40px;
+  }
+}
+
+.topBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  font-size: 14px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 700;
+
+  &:hover {
+    color: var(--color-blue);
+  }
+}
+
+.breadcrumb {
+  color: var(--color-sub);
+
+  b {
+    color: var(--color-ink);
+  }
+
+  @include m.mobile {
+    display: none;
+  }
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+
+  @include m.until-desktop {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  @include m.mobile {
+    margin-top: 12px;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 6px;
+  background: var(--color-wall-2);
+  color: var(--color-sub-2);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tagVolt {
+  background: var(--color-volt);
+  color: var(--color-ink);
+}
+
+.nameRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 4px 20px;
+  margin-top: 24px;
+
+  @include m.mobile {
+    margin-top: 16px;
+  }
+}
+
+.name {
+  font-size: clamp(44px, 6vw, 84px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.en {
+  font-size: clamp(32px, 6vw, 84px);
+  line-height: 0.85;
+  color: var(--color-blue);
+}
+
+.definition {
+  margin-top: 28px;
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+
+  // 형광펜처럼 아래쪽만 칠하기
+  mark {
+    background: none;
+    box-shadow: inset 0 -0.5em 0 var(--color-volt);
+    color: inherit;
+  }
+
+  @include m.mobile {
+    margin-top: 18px;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
+  font-size: 15px;
+
+  dt {
+    font-size: 13px;
+    color: var(--color-sub);
+  }
+
+  dd {
+    margin-top: 6px;
+    font-weight: 700;
+  }
+
+  @include m.mobile {
+    margin-top: 20px;
+    padding-top: 16px;
+    font-size: 14px;
+  }
+}
+
+// 궤적 그림 패널
+.figure {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  background: var(--color-blue);
+  color: var(--color-surface);
+
+  @include m.mobile {
+    gap: 18px;
+    padding: 20px;
+    border-radius: 24px;
+  }
+}
+
+.figureArt {
+  flex: none;
+  width: 220px;
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+
+  @include m.mobile {
+    width: 112px;
+    padding: 6px;
+  }
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 15px;
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    > span:last-child {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+
+  @include m.mobile {
+    gap: 12px;
+    font-size: 14px;
+
+    ol {
+      gap: 10px;
+    }
+
+    li > span:last-child span {
+      font-size: 12px;
+    }
+  }
+}
+
+.stepsLabel {
+  font-size: 20px;
+  color: var(--color-volt);
+
+  @include m.mobile {
+    font-size: 16px;
+  }
+}
+
+.stepNumber {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-volt);
+  color: var(--color-ink);
+  font-size: 14px;
+  font-weight: 700;
+
+  @include m.mobile {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+}
+
+// ===== 언제 쓰나 =====
+.usage {
+  padding: 88px 0;
+  border-radius: 40px 40px 0 0;
+  background: var(--color-wall);
+
+  @include m.mobile {
+    padding: 44px 0 48px;
+    border-radius: 28px 28px 0 0;
+  }
+}
+
+.sectionTitle {
+  margin: 16px 0 36px;
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+
+  @include m.mobile {
+    margin: 12px 0 20px;
+  }
+}
+
+.useGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+
+  @include m.until-desktop {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.useCard {
+  padding: 28px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+
+  h3 {
+    margin: 16px 0 10px;
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-sub);
+  }
+
+  @include m.mobile {
+    padding: 20px;
+    border-radius: 20px;
+
+    h3 {
+      margin: 10px 0 6px;
+      font-size: 17px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+.useNumber {
+  font-size: 44px;
+  color: var(--color-blue);
+
+  @include m.mobile {
+    font-size: 28px;
+  }
+}
+
+.tipGrid {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: 24px;
+  margin-top: 24px;
+
+  @include m.until-desktop {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+}
+
+.tips {
+  padding: 36px;
+  border-radius: 28px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+
+  h3 {
+    margin: 14px 0 24px;
+    font-size: 26px;
+  }
+
+  ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  li {
+    padding-top: 16px;
+    border-top: 2px solid var(--color-volt);
+
+    b {
+      font-size: 16px;
+    }
+
+    p {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.78);
+    }
+  }
+
+  @include m.mobile {
+    padding: 24px 20px;
+    border-radius: 20px;
+
+    h3 {
+      margin: 10px 0 16px;
+      font-size: 20px;
+    }
+
+    ol {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    li {
+      padding-top: 12px;
+    }
+  }
+}
+
+.eyebrowVolt {
+  color: var(--color-volt);
+}
+
+.mistakes {
+  padding: 32px;
+  border: 2px solid var(--color-red-soft);
+  border-radius: 28px;
+  background: var(--color-surface);
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  li {
+    display: flex;
+    gap: 10px;
+
+    &::before {
+      content: '✕';
+      color: var(--color-red);
+      font-weight: 900;
+    }
+  }
+
+  @include m.mobile {
+    padding: 24px 20px;
+    border-radius: 20px;
+
+    ul {
+      gap: 10px;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+  }
+}
+
+// ===== 함께 알아두면 좋은 용어 =====
+.more {
+  padding-top: 72px;
+  padding-bottom: 88px;
+
+  @include m.mobile {
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+}
+
+.moreTitle {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 900;
+
+  @include m.mobile {
+    margin-bottom: 14px;
+    font-size: 20px;
+  }
+}
+
+.moreGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+
+  @include m.until-desktop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include m.mobile {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.relatedCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  transition: border-color 0.2s;
+
+  .relatedEn {
+    font-size: 16px;
+    color: var(--color-sub);
+  }
+
+  b {
+    font-size: 18px;
+  }
+
+  &:hover {
+    border-color: var(--color-blue);
+  }
+
+  @include m.mobile {
+    padding: 16px 18px;
+
+    b {
+      font-size: 16px;
+    }
+  }
+}
+
+.relatedSummary {
+  font-size: 14px;
+  color: var(--color-sub);
+}
+
+.pager {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 56px;
+    padding: 0 20px;
+    border-radius: 16px;
+    font-size: 14px;
+  }
+
+  @include m.until-desktop {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+}
+
+.prev {
+  background: var(--color-wall);
+
+  span {
+    color: var(--color-sub);
+  }
+}
+
+.next {
+  background: var(--color-ink);
+  color: var(--color-surface);
+
+  span {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
