@@ -6,6 +6,7 @@ import GearPage from './pages/GearPage'
 import GlossaryPage from './pages/GlossaryPage'
 import GlossaryDetailPage from './pages/GlossaryDetailPage'
 import ScorePage from './pages/ScorePage'
+import GuidePage from './pages/GuidePage'
 import NotFoundPage from './pages/NotFoundPage'
 
 // 주소와 페이지를 연결하는 '지도' 역할
@@ -21,6 +22,7 @@ function App() {
         {/* :id 자리에 오는 값은 상세 페이지에서 useParams로 꺼내 써요 */}
         <Route path="/glossary/:id" element={<GlossaryDetailPage />} />
         <Route path="/score" element={<ScorePage />} />
+        <Route path="/guide" element={<GuidePage />} />
         {/* 위에 없는 주소는 모두 여기로 */}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
