@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOZO Mall 리뉴얼 · 로그인 시안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* 메인 시안과 같은 디자인 토큰 */
+:root{
+  --green:#86BC43; --green-dark:#4E8A1A; --green-soft:#EEF6E3; --green-deep:#2F5410;
+  --ink:#1B1F26; --ink-2:#2B313B; --sub:#6B7280; --line:#E5E8EC; --wall:#F5F6F8; --surface:#fff;
+  --error:#D93B30;
+  --radius-sm:8px; --radius-md:14px; --radius-lg:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Pretendard,'Malgun Gothic',sans-serif;color:var(--ink);background:#fff;font-size:15px;line-height:1.5;letter-spacing:-0.01em;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{list-style:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+.logo{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:22px;letter-spacing:-0.02em}
+.logo-mark{width:34px;height:34px;border-radius:50%;background:conic-gradient(var(--green) 0 25%,#B8DB8C 0 50%,#5FA02A 0 75%,#D5EBB9 0);position:relative}
+.logo-mark::after{content:'';position:absolute;inset:9px;border-radius:50%;background:var(--bg,#fff)}
+.logo small{font-size:12px;font-weight:600;color:var(--green-dark)}
+
+/* ---------- 레이아웃: 왼쪽 브랜드 패널 + 오른쪽 로그인 ---------- */
+.wrap{flex:1;display:grid;place-items:center;padding:48px 24px}
+/* 페이지·좌측 모두 흰 배경, 우측 로그인만 라인으로 구분된 독립 영역 */
+.shell{width:100%;max-width:1160px;display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:stretch}
+
+/* 브랜드 패널 (흰 배경) */
+.brand{position:relative;padding:0;display:flex;flex-direction:column}
+/* 왼쪽 마지막 설명 줄의 아래 끝 = 오른쪽 로그인 박스 아래 라인 */
+.benefits{margin-bottom:-4px}
+.brand h1{font-size:34px;line-height:1.3;font-weight:800;letter-spacing:-0.03em;margin-top:36px}
+.brand h1 b{color:var(--green-dark)}
+/* 혜택 카드 2×2 : 위 이미지(연회색 둥근 영역) + 아래 제목·설명, 모두 가운데 정렬 */
+.benefits{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:28px 14px;position:relative;z-index:1}
+.benefit{display:flex;flex-direction:column;align-items:center;text-align:center}
+.benefit-img{width:100%;aspect-ratio:3/2;border-radius:16px;background:#F5F6F8;overflow:hidden;display:grid;place-items:center}
+.benefit-img img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.benefit b{display:block;margin-top:14px;font-size:16px;font-weight:800;letter-spacing:-0.02em}
+.benefit span{display:block;margin-top:6px;font-size:13px;line-height:1.55;color:var(--sub)}
+
+/* 로그인 폼: 그림자·배경색 없이 라인 하나로만 구분 */
+.form-side{padding:48px 48px 36px;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:24px;background:#fff}
+.form-side .mo-logo{display:none}
+.form-head h2{font-size:28px;font-weight:800;letter-spacing:-0.03em}
+.form-head p{margin-top:6px;color:var(--sub);font-size:14.5px}
+
+form{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--ink-2)}
+.input{position:relative;display:flex;align-items:center;height:54px;border:1.5px solid var(--line);border-radius:12px;padding:0 14px 0 16px;background:#fff;transition:border-color .15s, box-shadow .15s}
+.input:focus-within{border-color:var(--green);box-shadow:0 0 0 4px rgba(134,188,67,.18)}
+.input input{flex:1;min-width:0;height:100%;border:0;outline:0;font:inherit;font-size:16px;background:none}
+.input input::placeholder{color:#A0A6B0}
+.input .clear,.input .eye{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#9AA1AC}
+.input .clear{visibility:hidden}
+.input.has-value .clear{visibility:visible}
+.field.error .input{border-color:var(--error)}
+.field.error .input:focus-within{box-shadow:0 0 0 4px rgba(217,59,48,.12)}
+.msg{display:none;margin-top:6px;font-size:12.5px;color:var(--error)}
+.field.error .msg{display:block}
+.caps{display:none;margin-top:6px;font-size:12.5px;color:var(--green-dark)}
+.caps.on{display:block}
+
+.opts{display:flex;justify-content:space-between;align-items:center;margin-top:2px}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;user-select:none}
+.check input{appearance:none;width:20px;height:20px;border-radius:6px;border:1.5px solid #C9CED6;display:grid;place-items:center;cursor:pointer;transition:.15s}
+.check input:checked{background:var(--green);border-color:var(--green)}
+.check input:checked::after{content:'';width:10px;height:6px;border:2px solid #fff;border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}
+.check input:focus-visible{outline:2px solid var(--green-dark);outline-offset:2px}
+.finds{display:flex;gap:10px;font-size:13.5px;color:var(--sub)}
+.finds a:hover{color:var(--ink)}
+.finds i{width:1px;height:12px;background:var(--line);align-self:center}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;height:56px;border-radius:12px;font-weight:700;font-size:16px;width:100%}
+.btn-green{background:var(--green);color:#fff;margin-top:8px;transition:filter .15s}
+.btn-green:hover{filter:brightness(.95)}
+.btn-line{border:1.5px solid var(--line);background:#fff}
+.btn-line:hover{border-color:#C9CED6}
+
+.divider{display:flex;align-items:center;gap:12px;margin:22px 0 14px;font-size:12.5px;color:#9AA1AC}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--line)}
+.join-row{display:grid;grid-template-columns:1fr}
+.join-row .btn{height:50px;font-size:15px}
+.join-note{margin-top:10px;font-size:12.5px;color:var(--sub);text-align:center}
+
+.help{margin-top:auto;padding-top:28px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--sub)}
+.help b{color:var(--ink);font-size:15px}
+.help a{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:999px;background:var(--wall);color:var(--ink-2);font-weight:600}
+
+/* 푸터 */
+.foot{padding:0 24px 28px;text-align:center;font-size:12px;color:#9AA1AC}
+.foot nav{display:flex;justify-content:center;gap:16px;margin-bottom:6px;color:var(--sub);font-weight:600}
+
+/* 시안 주석 */
+.anno{display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#7A4CD9;background:#F2ECFF;border-radius:6px;padding:3px 8px;margin-left:6px;vertical-align:3px;letter-spacing:0;white-space:nowrap}
+body.no-anno .anno{display:none}
+.anno-toggle{position:fixed;left:16px;bottom:16px;z-index:40;height:34px;padding:0 14px;border-radius:999px;background:#7A4CD9;color:#fff;font-size:12px;font-weight:700;box-shadow:0 4px 14px rgba(122,76,217,.35)}
+
+/* ---------- 태블릿 ---------- */
+@media (max-width:1023px){
+  .shell{grid-template-columns:1fr;max-width:560px;gap:48px}
+  .brand{padding:0;order:2}
+  .brand h1{font-size:26px;margin-top:20px}
+  .benefits{margin-top:24px}
+  .form-side{padding:40px 36px 32px}
+}
+
+/* ---------- 모바일: 폼이 먼저, 혜택은 아래로 ---------- */
+@media (max-width:767px){
+  .wrap{padding:0;place-items:stretch}
+  .shell{max-width:none;display:flex;flex-direction:column;gap:0}
+  .form-side{padding:28px 20px 28px;border:0;border-radius:0}
+  .form-side .mo-logo{display:inline-flex;margin-bottom:28px;font-size:19px}
+  .form-side .mo-logo .logo-mark{width:28px;height:28px}
+  .form-side .mo-logo .logo-mark::after{inset:7px}
+  .form-head h2{font-size:24px}
+  .input{height:52px}
+  .brand{padding:32px 20px 36px;border-top:1px solid var(--line)}
+  .brand .logo{display:none}
+  .brand h1{font-size:21px;margin-top:0}
+  .benefits{grid-template-columns:1fr;gap:28px;margin-top:22px}
+  .benefit b{font-size:16px}
+  .help{padding-top:24px}
+  .foot{padding:20px 20px 28px;border-top:1px solid var(--line)}
+  .anno-toggle{bottom:12px}
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <div class="shell">
+
+    <!-- 브랜드 패널: 기존 '소조몰 회원혜택' 4가지를 정리 -->
+    <section class="brand" aria-label="소조몰 회원 혜택">
+      <a href="#" class="logo"><span class="logo-mark"></span>SOZO<small>Mall</small></a>
+      <h1>약국 주문, <b>더 빠르고 편하게</b></h1>
+      <!-- 혜택 카드 2×2 : 이미지 파일은 images/login/ 에서 개별 관리 -->
+      <ul class="benefits">
+        <li class="benefit">
+          <div class="benefit-img"><img src="images/login/benefit-online.webp" alt="" width="960" height="640"></div>
+          <b>신일제품을 소조몰에서</b>
+          <span>신일제약 제품을 이제 온라인으로도<br>구매할 수 있습니다.</span>
+        </li>
+        <li class="benefit">
+          <div class="benefit-img"><img src="images/login/benefit-special.webp" alt="" width="960" height="640"></div>
+          <b>특별제품을 한눈에</b>
+          <span>현재 할인하고 있는 제품들을 모아서<br>쉽고 편하게 구매할 수 있습니다.</span>
+        </li>
+        <li class="benefit">
+          <div class="benefit-img"><img src="images/login/benefit-trade.webp" alt="" width="960" height="640"></div>
+          <b>원하시는 거래 선택가능</b>
+          <span>MR거래, 소조몰온라인거래 중<br>원하시는 거래를 선택하실 수 있습니다.</span>
+        </li>
+        <li class="benefit">
+          <div class="benefit-img"><img src="images/login/benefit-pay.webp" alt="" width="960" height="640"></div>
+          <b>편리하고 스마트한 간편결제</b>
+          <span>제휴카드 및 카카오페이, 페이코까지<br>쉽고 간편하게 결제하세요.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 로그인 -->
+    <section class="form-side" aria-labelledby="loginTitle">
+      <a href="#" class="logo mo-logo"><span class="logo-mark"></span>SOZO<small>Mall</small></a>
+      <div class="form-head">
+        <h2 id="loginTitle">로그인</h2>
+        <p>약국 회원 아이디로 로그인해 주세요</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="field" id="fId">
+          <label for="uid">아이디</label>
+          <div class="input">
+            <input id="uid" name="uid" type="text" autocomplete="username" placeholder="아이디를 입력해 주세요" autocapitalize="off" spellcheck="false">
+            <button type="button" class="clear" aria-label="아이디 지우기">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#C9CED6"><circle cx="12" cy="12" r="10"/><path d="m9 9 6 6M15 9l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <p class="msg">아이디를 입력해 주세요.</p>
+        </div>
+
+        <div class="field" id="fPw">
+          <label for="upw">비밀번호</label>
+          <div class="input">
+            <input id="upw" name="upw" type="password" autocomplete="current-password" placeholder="비밀번호를 입력해 주세요">
+            <button type="button" class="eye" aria-label="비밀번호 보기" aria-pressed="false">
+              <svg class="eye-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <p class="msg">비밀번호를 입력해 주세요.</p>
+          <p class="caps" id="caps">Caps Lock이 켜져 있어요</p>
+        </div>
+
+        <div class="opts">
+          <label class="check"><input type="checkbox" id="saveId">아이디 저장</label>
+          <div class="finds"><a href="#">아이디 찾기</a><i></i><a href="#">비밀번호 찾기</a></div>
+        </div>
+
+        <button type="submit" class="btn btn-green">로그인</button>
+      </form>
+
+      <p class="divider">처음 오셨나요?</p>
+      <div class="join-row">
+        <a href="#" class="btn btn-line">회원가입</a>
+      </div>
+      <p class="join-note">약국 사업자 인증 후 이용할 수 있어요</p>
+
+      <div class="help">
+        <div>고객센터 <b>02-0000-0000</b><br>평일 09:00~18:00 (점심 12~13시)</div>
+        <a href="#">🖥️ 원격지원</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <nav><a href="#">이용약관</a><a href="#">개인정보 처리방침</a><a href="#">사업자 정보</a></nav>
+  <p>리뉴얼 콘셉트 시안 · 실제 서비스와 관계없는 포트폴리오 작업물입니다.</p>
+</footer>
+
+
+<script>
+(function(){
+  var form = document.getElementById('loginForm');
+  var uid = document.getElementById('uid');
+  var upw = document.getElementById('upw');
+  var fId = document.getElementById('fId');
+  var fPw = document.getElementById('fPw');
+  var eye = document.querySelector('.eye');
+  var clear = document.querySelector('.clear');
+  var caps = document.getElementById('caps');
+
+  // 입력값이 있으면 지우기 버튼 표시, 입력하면 에러 해제
+  uid.addEventListener('input', function(){
+    uid.parentNode.classList.toggle('has-value', !!uid.value);
+    fId.classList.remove('error');
+  });
+  upw.addEventListener('input', function(){ fPw.classList.remove('error'); });
+  clear.addEventListener('click', function(){ uid.value=''; uid.parentNode.classList.remove('has-value'); uid.focus(); });
+
+  // 비밀번호 보기/숨기기
+  eye.addEventListener('click', function(){
+    var show = upw.type === 'password';
+    upw.type = show ? 'text' : 'password';
+    eye.setAttribute('aria-pressed', show);
+    eye.setAttribute('aria-label', show ? '비밀번호 숨기기' : '비밀번호 보기');
+    eye.style.color = show ? 'var(--green-dark)' : '';
+  });
+
+  // Caps Lock 안내
+  upw.addEventListener('keyup', function(e){
+    if (e.getModifierState) caps.classList.toggle('on', e.getModifierState('CapsLock'));
+  });
+
+  // 빈칸 검사 (시안이라 실제 전송은 하지 않음)
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    fId.classList.toggle('error', !uid.value.trim());
+    fPw.classList.toggle('error', !upw.value);
+    var first = form.querySelector('.field.error input');
+    if (first) first.focus();
+  });
+})();
+</script>
+</body>
+</html>
