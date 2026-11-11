@@ -3,3 +3,6 @@ id_rsa
 id_rsa.*
 *.ppk
 *.pem
+
+# Claude 앱 로컬 설정 (미리보기 서버 등)
+.claude/
