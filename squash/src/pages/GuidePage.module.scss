@@ -5,25 +5,87 @@
     h2{
         margin-bottom: 32px;
     }
+    & + .sectionWrap{padding-top: 0;}
     @include m.mobile{
         padding-top: 48px; padding-bottom: 56px;
     }
 }
 
-.color{
-    &Grid{
-        display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;
-        @include m.tablet-only{
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+.serve{
+  padding: 96px 0 104px;
+  background: var(--color-wall);
+
+  @include m.mobile {
+    padding: 48px 0 56px;
+    border-radius: 28px 28px 0 0;
+  }
+}
+
+.sectionHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 18px 0 40px;
+
+  @include m.until-desktop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @include m.mobile {
+    margin: 14px 0 20px;
+  }
+}
+
+.sectionTitle {
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+.hint {
+  font-size: 15px;
+  color: var(--color-sub);
+}
+
+// PC 열 수 : 태블릿 열 수 (모바일은 모두 1열)
+$grid-cols: (2: 2, 3: 1, 4: 2);
+@each $col, $tablet-col in $grid-cols{
+    .gridCol#{$col}{
+        display: grid; grid-template-columns: repeat($col, minmax(0, 1fr));
+        gap: 24px;
+
+        @include m.until-desktop{
+            grid-template-colums: repeat($tablet-col, minmax(0, 1fr));
+            gpa: 12px;
         }
         @include m.mobile{
-            grid-template-columns: 1fr;
-            gap: 12px;
+            grid-template-columns:  1fr;
         }
     }
+}
+
+// 01. 디자인 컨셉 
+.lineButton {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 50px 30px;
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  background: var(--color-surface);
+  text-align: left;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.color{
     &Card{
-        border: 1px solid var(--color-line); border-radius: 20px; overflow: hidden;
+        border: 1px solid var(--color-line); border-radius: 20px; overflow: hidden; background-color: #fff;
     }
     &CardText{
         display: flex; flex-direction: column; padding: 20px;

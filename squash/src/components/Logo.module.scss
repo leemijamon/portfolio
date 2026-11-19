@@ -65,3 +65,19 @@
     color: var(--color-surface);
   }
 }
+
+/* 사이즈 : Big, 가이드 페이지 */
+.big{
+  .ball{
+    width: 80px;
+    height: 80px;
+    gap: 14px;
+    i{
+      width: 18px;
+      height: 18px;
+    }
+  }
+  .wordmark{
+    font-size: 84px;
+  }
+}
